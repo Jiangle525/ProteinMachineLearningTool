@@ -1,0 +1,2059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>580</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>850</width>
+    <height>580</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Protein Machine Learning Tools</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="background.qrc">
+    <normaloff>:/imgs/imgs/logo.png</normaloff>:/imgs/imgs/logo.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QWidget" name="widget_Interaction" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="widget_Input" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <property name="leftMargin">
+           <number>2</number>
+          </property>
+          <property name="topMargin">
+           <number>2</number>
+          </property>
+          <property name="rightMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox_Methods">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Adobe 黑体 Std R</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QGroupBox::title{
+font-size: 13px;
+font-weight: bold;
+}</string>
+            </property>
+            <property name="title">
+             <string>Methods</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QTreeWidget" name="treeWidget_Select_Features">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                </font>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <column>
+                <property name="text">
+                 <string>Select Feature</string>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Adobe 黑体 Std R</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="textAlignment">
+                 <set>AlignCenter</set>
+                </property>
+               </column>
+               <item>
+                <property name="text">
+                 <string>Manual Feature</string>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>AAC</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>DDE</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>CKSAAP</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>KSCTriad</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>CTraid</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>TPC</string>
+                 </property>
+                </item>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Embedding Feature</string>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Word Vector</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Word Bagging</string>
+                 </property>
+                </item>
+               </item>
+               <item>
+                <property name="text">
+                 <string/>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTreeWidget" name="treeWidget_Select_Models">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                </font>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <column>
+                <property name="text">
+                 <string>Select Model</string>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Adobe 黑体 Std R</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                  <underline>false</underline>
+                  <strikeout>false</strikeout>
+                 </font>
+                </property>
+                <property name="textAlignment">
+                 <set>AlignCenter</set>
+                </property>
+               </column>
+               <item>
+                <property name="text">
+                 <string>Non Deep Learning</string>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>LR</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>DT</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>RF</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>SVM</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>LightGBM</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>GBDT</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>XGboost</string>
+                 </property>
+                </item>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Deep Learning</string>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>CNN</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>LSTM</string>
+                 </property>
+                </item>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_Params">
+            <property name="font">
+             <font>
+              <family>Adobe 黑体 Std R</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+              <underline>false</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QGroupBox::title{
+font-size: 13px;
+font-weight: bold;
+}</string>
+            </property>
+            <property name="title">
+             <string>Params</string>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item alignment="Qt::AlignTop">
+              <widget class="QWidget" name="widget_Params" native="true">
+               <property name="palette">
+                <palette>
+                 <active>
+                  <colorrole role="Base">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>227</red>
+                     <green>227</green>
+                     <blue>227</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </active>
+                 <inactive>
+                  <colorrole role="Base">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>227</red>
+                     <green>227</green>
+                     <blue>227</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </inactive>
+                 <disabled>
+                  <colorrole role="Base">
+                   <brush brushstyle="SolidPattern">
+                    <color alpha="255">
+                     <red>240</red>
+                     <green>240</green>
+                     <blue>240</blue>
+                    </color>
+                   </brush>
+                  </colorrole>
+                 </disabled>
+                </palette>
+               </property>
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                </font>
+               </property>
+               <layout class="QFormLayout" name="formLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_Encoding">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Encoding:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="lineEdit_Encoding">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>AAC</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_Model">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Model:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="lineEdit_Model">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>LR</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_Cross_Validation">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Cross Validation:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="lineEdit_Cross_Validation">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>10</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_Super_Params">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Super Params:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0" colspan="2">
+                 <widget class="QTextBrowser" name="textBrowser_Super_Params">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>240</red>
+                        <green>240</green>
+                        <blue>240</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>240</red>
+                        <green>240</green>
+                        <blue>240</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>240</red>
+                        <green>240</green>
+                        <blue>240</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::NoFrame</enum>
+                  </property>
+                  <property name="html">
+                   <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_Output" native="true">
+         <layout class="QGridLayout" name="gridLayout">
+          <property name="leftMargin">
+           <number>2</number>
+          </property>
+          <property name="topMargin">
+           <number>2</number>
+          </property>
+          <property name="rightMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
+           <number>2</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>4</number>
+          </property>
+          <item row="1" column="9">
+           <widget class="Line" name="line_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="Line" name="line_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="5">
+           <widget class="Line" name="line_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <widget class="Line" name="line_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="6">
+           <widget class="QTabWidget" name="tabWidget_Metrics">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QTabWidget::title{
+font-size: 13px;
+font-weight: bold;
+}</string>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tab_ROC_Curve">
+             <attribute name="title">
+              <string>ROC Curve</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QGraphicsView" name="graphicsView_ROC_Curve"/>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_Confusion_Matrix">
+             <attribute name="title">
+              <string>Confusion Matrix</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QGraphicsView" name="graphicsView_Confusion_Matrix"/>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_Classification_Report">
+             <attribute name="title">
+              <string>Classification Report</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableWidget" name="tableWidget_Classification_Report">
+                <property name="autoFillBackground">
+                 <bool>true</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QHeaderView::section, QTableCornerButton::section {
+padding: 1px;
+border: none;
+border-right: 1px solid ;
+border-bottom: 1px solid ;
+background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+stop:0 #55aaff, stop: 0.5 #bedeff,stop: 0.6 #bedeff, stop:1 #bedeff);
+color:black;
+}
+</string>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="showGrid">
+                 <bool>true</bool>
+                </property>
+                <property name="gridStyle">
+                 <enum>Qt::SolidLine</enum>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="rowCount">
+                 <number>3</number>
+                </property>
+                <attribute name="horizontalHeaderCascadingSectionResizes">
+                 <bool>false</bool>
+                </attribute>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                 <number>75</number>
+                </attribute>
+                <attribute name="horizontalHeaderHighlightSections">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="horizontalHeaderMinimumSectionSize">
+                 <number>30</number>
+                </attribute>
+                <attribute name="verticalHeaderDefaultSectionSize">
+                 <number>40</number>
+                </attribute>
+                <attribute name="verticalHeaderMinimumSectionSize">
+                 <number>40</number>
+                </attribute>
+                <row>
+                 <property name="text">
+                  <string>Positive</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>Negative</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>Average</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </row>
+                <column>
+                 <property name="text">
+                  <string>Acuraccy</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                 <property name="foreground">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                   </color>
+                  </brush>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Precision</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Recall</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>F1</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>MCC</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>AUC</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </column>
+                <item row="0" column="0">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="0" column="1">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="0" column="2">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="0" column="3">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="0" column="4">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="0" column="5">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="1" column="0">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="1" column="1">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="1" column="2">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="1" column="3">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="1" column="4">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="1" column="5">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="2" column="0">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="2" column="1">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="2" column="2">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="2" column="3">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="2" column="4">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+                <item row="2" column="5">
+                 <property name="text">
+                  <string>66.66%</string>
+                 </property>
+                 <property name="textAlignment">
+                  <set>AlignCenter</set>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item row="2" column="6">
+           <widget class="QGroupBox" name="groupBox_Features">
+            <property name="font">
+             <font>
+              <family>Arial Black</family>
+              <pointsize>10</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QGroupBox::title{
+font-size: 13px;
+font-weight: bold;
+}</string>
+            </property>
+            <property name="title">
+             <string>Features</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="topMargin">
+              <number>4</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
+              <number>3</number>
+             </property>
+             <item>
+              <widget class="QGraphicsView" name="graphicsView_Features"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QTabWidget" name="tabWidget_File">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QTabWidget::title{
+font-size: 13px;
+font-weight: bold;
+}</string>
+            </property>
+            <property name="tabShape">
+             <enum>QTabWidget::Rounded</enum>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tab_Train_File">
+             <attribute name="title">
+              <string>Train File</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTextBrowser" name="textBrowser_Train_File">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="html">
+                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_Test_File">
+             <attribute name="title">
+              <string>Test File</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTextBrowser" name="textBrowser_Test_File">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab">
+             <attribute name="title">
+              <string>Prediciton File</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_13">
+              <item>
+               <widget class="QTextBrowser" name="textBrowser_Prediction_File">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="html">
+                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_Preparation_File">
+             <attribute name="title">
+              <string>Preparation File</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_12">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTextBrowser" name="textBrowser_Preparation_File">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="html">
+                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item row="2" column="4">
+           <widget class="QGroupBox" name="groupBox_Message">
+            <property name="font">
+             <font>
+              <family>Arial Black</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QGroupBox::title{
+font-size: 13px;
+font-weight: bold;
+}</string>
+            </property>
+            <property name="title">
+             <string>Message</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="topMargin">
+              <number>4</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
+              <number>3</number>
+             </property>
+             <item>
+              <widget class="QTextBrowser" name="textBrowser_Message">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="html">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widget_Tips" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_10">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_Message_Tips">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>System Tips:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_System_Tips">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>15</height>
+          </size>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Progress_Bar_Tips">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Progress Bar:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QProgressBar" name="progressBar">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>15</height>
+          </size>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>850</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menu_Import_File">
+     <property name="title">
+      <string>Import File</string>
+     </property>
+     <addaction name="action_Import_Train_File"/>
+     <addaction name="separator"/>
+     <addaction name="action_Import_Test_File"/>
+     <addaction name="separator"/>
+     <addaction name="action_Import_Prediction_File"/>
+     <addaction name="separator"/>
+     <addaction name="action_Import_Preparation_File"/>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="menu_Import_File"/>
+    <addaction name="separator"/>
+    <addaction name="action_Import_Model"/>
+    <addaction name="separator"/>
+    <addaction name="action_Import_Feature"/>
+    <addaction name="separator"/>
+    <addaction name="action_Close_All_Files"/>
+    <addaction name="separator"/>
+    <addaction name="action_Clear_Output"/>
+    <addaction name="separator"/>
+    <addaction name="action_Exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Feature">
+    <property name="title">
+     <string>Feature</string>
+    </property>
+    <widget class="QMenu" name="menu_Manual_Feature">
+     <property name="title">
+      <string>Manual Feature</string>
+     </property>
+     <addaction name="action_AAC"/>
+     <addaction name="separator"/>
+     <addaction name="action_DDE"/>
+     <addaction name="separator"/>
+     <addaction name="action_CKSAAP"/>
+     <addaction name="separator"/>
+     <addaction name="action_KSCTriad"/>
+     <addaction name="separator"/>
+     <addaction name="action_CTriad"/>
+     <addaction name="separator"/>
+     <addaction name="action_TPC"/>
+    </widget>
+    <widget class="QMenu" name="menu_Embedding_Features">
+     <property name="title">
+      <string>Embedding Feature</string>
+     </property>
+     <addaction name="action_Word_Vector"/>
+     <addaction name="separator"/>
+     <addaction name="action_Word_Bagging"/>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="menu_Manual_Feature"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Embedding_Features"/>
+    <addaction name="separator"/>
+    <addaction name="action_Save_Features"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menu_Model">
+    <property name="title">
+     <string>Model</string>
+    </property>
+    <widget class="QMenu" name="menu_Encoding">
+     <property name="title">
+      <string>Encoding</string>
+     </property>
+     <widget class="QMenu" name="menu_Manual_Encoding">
+      <property name="title">
+       <string>Manual Encoding</string>
+      </property>
+      <addaction name="action_Encoding_AAC"/>
+      <addaction name="action_Encoding_DDE"/>
+      <addaction name="action_Encoding_CKSAAP"/>
+      <addaction name="action_Encoding_KSCTriad"/>
+      <addaction name="action_Encoding_CTriad"/>
+      <addaction name="action_Encoding_TPC"/>
+     </widget>
+     <widget class="QMenu" name="menu_Embedding_Encoding">
+      <property name="title">
+       <string>Embedding Encoding</string>
+      </property>
+      <addaction name="action_Encoding_Word_Vector"/>
+      <addaction name="action_Encoding_Word_Bagging"/>
+     </widget>
+     <addaction name="menu_Manual_Encoding"/>
+     <addaction name="menu_Embedding_Encoding"/>
+    </widget>
+    <widget class="QMenu" name="menu_Select_Model">
+     <property name="title">
+      <string>Select Model</string>
+     </property>
+     <addaction name="action_LR"/>
+     <addaction name="action_DT"/>
+     <addaction name="action_SVM"/>
+     <addaction name="action_RF"/>
+     <addaction name="action_GBDT"/>
+     <addaction name="action_LightGBM"/>
+     <addaction name="action_XGboost"/>
+     <addaction name="action_CNN"/>
+     <addaction name="action_LSTM"/>
+    </widget>
+    <widget class="QMenu" name="menu_Validation">
+     <property name="title">
+      <string>Validation</string>
+     </property>
+     <addaction name="action_Cross_Validation"/>
+     <addaction name="action_Leave_One_Out"/>
+    </widget>
+    <widget class="QMenu" name="menu_Save_Metrics">
+     <property name="title">
+      <string>Save Metrics</string>
+     </property>
+     <addaction name="action_Save_All_Metrics"/>
+     <addaction name="action_Save_Classfication_Report"/>
+     <addaction name="action_Save_Confusion_Matrix"/>
+     <addaction name="action_Save_Train_Loss"/>
+     <addaction name="action_Save_ROC_Curve"/>
+     <addaction name="action_Save_PRC_Curve"/>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="action_Start_Training"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Encoding"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Select_Model"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Validation"/>
+    <addaction name="separator"/>
+    <addaction name="action_Save_Model"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Save_Metrics"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_Document"/>
+    <addaction name="separator"/>
+    <addaction name="action_About"/>
+   </widget>
+   <widget class="QMenu" name="menu_Preparation">
+    <property name="title">
+     <string>Preparation</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_Duplication"/>
+    <addaction name="separator"/>
+    <addaction name="action_Length_Clipping"/>
+    <addaction name="separator"/>
+    <addaction name="action_CD_HIT"/>
+    <addaction name="separator"/>
+    <addaction name="action_Format_File"/>
+    <addaction name="separator"/>
+    <addaction name="action_Save_Preparation"/>
+   </widget>
+   <widget class="QMenu" name="menu_Prediction">
+    <property name="title">
+     <string>Prediction</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_Start_Prediction"/>
+    <addaction name="separator"/>
+    <addaction name="action_Save_Prediction_Result"/>
+   </widget>
+   <widget class="QMenu" name="menu_Visualization">
+    <property name="title">
+     <string>Visualization</string>
+    </property>
+    <widget class="QMenu" name="menu_Dimension_Reduction">
+     <property name="title">
+      <string>Dimension Reduction</string>
+     </property>
+     <addaction name="action_t_SNE"/>
+     <addaction name="action_UMAP"/>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="menu_Dimension_Reduction"/>
+    <addaction name="separator"/>
+    <addaction name="action_Feature_Ranking"/>
+    <addaction name="separator"/>
+    <addaction name="action_Network_Visualization"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Preparation"/>
+   <addaction name="menu_Feature"/>
+   <addaction name="menu_Model"/>
+   <addaction name="menu_Prediction"/>
+   <addaction name="menu_Visualization"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_Import_Train_File"/>
+   <addaction name="action_Import_Test_File"/>
+   <addaction name="action_Import_Prediction_File"/>
+   <addaction name="action_Import_Preparation_File"/>
+   <addaction name="action_Import_Model"/>
+   <addaction name="action_Import_Feature"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+   <addaction name="action_Save_Preparation"/>
+   <addaction name="action_Save_Prediction_Result"/>
+   <addaction name="action_Save_Features"/>
+   <addaction name="action_Save_Model"/>
+   <addaction name="action_Save_All_Metrics"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+   <addaction name="action_Start_Training"/>
+   <addaction name="action_Start_Prediction"/>
+   <addaction name="action_Stop"/>
+   <addaction name="action_Feature_Ranking"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+   <addaction name="action_Close_All_Files"/>
+   <addaction name="action_Clear_Output"/>
+  </widget>
+  <action name="action_Exit">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/logout.png</normaloff>:/imgs/imgs/menu/logout.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="action_Document">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/60_document.png</normaloff>:/imgs/imgs/menu/60_document.png</iconset>
+   </property>
+   <property name="text">
+    <string>Document</string>
+   </property>
+  </action>
+  <action name="actiont_SNE">
+   <property name="text">
+    <string>t-SNE</string>
+   </property>
+  </action>
+  <action name="action_CD_HIT">
+   <property name="text">
+    <string>CD-HIT</string>
+   </property>
+  </action>
+  <action name="action_Duplication">
+   <property name="text">
+    <string>Duplication</string>
+   </property>
+  </action>
+  <action name="action_AAC">
+   <property name="text">
+    <string>AAC</string>
+   </property>
+  </action>
+  <action name="action_DDE">
+   <property name="text">
+    <string>DDE</string>
+   </property>
+  </action>
+  <action name="action_Word_Vector">
+   <property name="text">
+    <string>Word Vector</string>
+   </property>
+  </action>
+  <action name="action_Word_Bagging">
+   <property name="text">
+    <string>Word Bagging</string>
+   </property>
+  </action>
+  <action name="action_CKSAAP">
+   <property name="text">
+    <string>CKSAAP</string>
+   </property>
+  </action>
+  <action name="action_Import_Feature">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/05_import_feature.png</normaloff>:/imgs/imgs/menu/05_import_feature.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import Feature</string>
+   </property>
+  </action>
+  <action name="action_Import_Model">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/04_import_model.png</normaloff>:/imgs/imgs/menu/04_import_model.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import Model</string>
+   </property>
+  </action>
+  <action name="action_Close_All_Files">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/06_close_all_files.png</normaloff>:/imgs/imgs/menu/06_close_all_files.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close All Files</string>
+   </property>
+  </action>
+  <action name="action_Import_Train_File">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/00_import_train.png</normaloff>:/imgs/imgs/menu/00_import_train.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import Training File</string>
+   </property>
+  </action>
+  <action name="action_Import_Test_File">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/01_import_test.png</normaloff>:/imgs/imgs/menu/01_import_test.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import Test File</string>
+   </property>
+  </action>
+  <action name="action_Import_Prediction_File">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/03_import_prediction.png</normaloff>:/imgs/imgs/menu/03_import_prediction.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import Prediction File</string>
+   </property>
+  </action>
+  <action name="action_Length_Clipping">
+   <property name="text">
+    <string>Length Clipping</string>
+   </property>
+  </action>
+  <action name="action_Save_Features">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/20_save-feature.png</normaloff>:/imgs/imgs/menu/20_save-feature.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Features</string>
+   </property>
+  </action>
+  <action name="action_KSCTriad">
+   <property name="text">
+    <string>KSCTriad</string>
+   </property>
+  </action>
+  <action name="action_CTriad">
+   <property name="text">
+    <string>CTriad</string>
+   </property>
+  </action>
+  <action name="action_TPC">
+   <property name="text">
+    <string>TPC</string>
+   </property>
+  </action>
+  <action name="action_Start_Training">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/30_start_training.png</normaloff>:/imgs/imgs/menu/30_start_training.png</iconset>
+   </property>
+   <property name="text">
+    <string>Start Training</string>
+   </property>
+  </action>
+  <action name="action_Save_Model">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/31_save_model.png</normaloff>:/imgs/imgs/menu/31_save_model.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Model</string>
+   </property>
+  </action>
+  <action name="action_Save_Preparation">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/10_save_preparation.png</normaloff>:/imgs/imgs/menu/10_save_preparation.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Preparation</string>
+   </property>
+  </action>
+  <action name="action_Encoding_AAC">
+   <property name="text">
+    <string>AAC</string>
+   </property>
+  </action>
+  <action name="action_Encoding_DDE">
+   <property name="text">
+    <string>DDE</string>
+   </property>
+  </action>
+  <action name="action_Encoding_CKSAAP">
+   <property name="text">
+    <string>CKSAAP</string>
+   </property>
+  </action>
+  <action name="action_Encoding_KSCTriad">
+   <property name="text">
+    <string>KSCTriad</string>
+   </property>
+  </action>
+  <action name="action_Encoding_TPC">
+   <property name="text">
+    <string>TPC</string>
+   </property>
+  </action>
+  <action name="action_Encoding_CTriad">
+   <property name="text">
+    <string>CTriad</string>
+   </property>
+  </action>
+  <action name="action_Encoding_Word_Vector">
+   <property name="text">
+    <string>Word Vector</string>
+   </property>
+  </action>
+  <action name="action_Encoding_Word_Bagging">
+   <property name="text">
+    <string>Word Bagging</string>
+   </property>
+  </action>
+  <action name="action_LR">
+   <property name="text">
+    <string>LR</string>
+   </property>
+  </action>
+  <action name="action_DT">
+   <property name="text">
+    <string>DT</string>
+   </property>
+  </action>
+  <action name="action_SVM">
+   <property name="text">
+    <string>SVM</string>
+   </property>
+  </action>
+  <action name="action_RF">
+   <property name="text">
+    <string>RF</string>
+   </property>
+  </action>
+  <action name="action_GBDT">
+   <property name="text">
+    <string>GBDT</string>
+   </property>
+  </action>
+  <action name="action_LightGBM">
+   <property name="text">
+    <string>LightGBM</string>
+   </property>
+  </action>
+  <action name="action_XGboost">
+   <property name="text">
+    <string>XGboost</string>
+   </property>
+  </action>
+  <action name="action_CNN">
+   <property name="text">
+    <string>CNN</string>
+   </property>
+  </action>
+  <action name="action_LSTM">
+   <property name="text">
+    <string>LSTM</string>
+   </property>
+  </action>
+  <action name="action_Cross_Validation">
+   <property name="text">
+    <string>Cross Validation</string>
+   </property>
+  </action>
+  <action name="action_Leave_One_Out">
+   <property name="text">
+    <string>Leave One Out</string>
+   </property>
+  </action>
+  <action name="action_Save_All_Metrics">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/32_save_metrics.png</normaloff>:/imgs/imgs/menu/32_save_metrics.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save All Metrics</string>
+   </property>
+   <property name="toolTip">
+    <string>Save All Metrics</string>
+   </property>
+  </action>
+  <action name="action_Save_Classfication_Report">
+   <property name="text">
+    <string>Classfication Report</string>
+   </property>
+  </action>
+  <action name="action_Save_Confusion_Matrix">
+   <property name="text">
+    <string>Confusion Matrix</string>
+   </property>
+  </action>
+  <action name="action_Save_Train_Loss">
+   <property name="text">
+    <string>Train Loss</string>
+   </property>
+  </action>
+  <action name="action_Save_ROC_Curve">
+   <property name="text">
+    <string>ROC Curve</string>
+   </property>
+  </action>
+  <action name="action_Save_PRC_Curve">
+   <property name="text">
+    <string>PRC Curve</string>
+   </property>
+  </action>
+  <action name="action_Start_Prediction">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/40_start_prediction.png</normaloff>:/imgs/imgs/menu/40_start_prediction.png</iconset>
+   </property>
+   <property name="text">
+    <string>Start Prediction</string>
+   </property>
+  </action>
+  <action name="action_Save_Prediction_Result">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/41_save_prediction_result.png</normaloff>:/imgs/imgs/menu/41_save_prediction_result.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Prediction Result</string>
+   </property>
+  </action>
+  <action name="action_Feature_Ranking">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/50_feature_ranking.png</normaloff>:/imgs/imgs/menu/50_feature_ranking.png</iconset>
+   </property>
+   <property name="text">
+    <string>Feature Ranking</string>
+   </property>
+  </action>
+  <action name="action_Network_Visualization">
+   <property name="text">
+    <string>Network Visualization</string>
+   </property>
+  </action>
+  <action name="action_t_SNE">
+   <property name="text">
+    <string>t-SNE</string>
+   </property>
+  </action>
+  <action name="action_UMAP">
+   <property name="text">
+    <string>UMAP</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="action_Clear_Output">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/08_file_clear.png</normaloff>:/imgs/imgs/menu/08_file_clear.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear Output</string>
+   </property>
+  </action>
+  <action name="action_Stop">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/stop.png</normaloff>:/imgs/imgs/menu/stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="action_Format_File">
+   <property name="text">
+    <string>Format File</string>
+   </property>
+  </action>
+  <action name="action_Import_Preparation_File">
+   <property name="icon">
+    <iconset resource="background.qrc">
+     <normaloff>:/imgs/imgs/menu/03_import_preparation.png</normaloff>:/imgs/imgs/menu/03_import_preparation.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import Preparation File</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="background.qrc"/>
+ </resources>
+ <connections/>
+</ui>

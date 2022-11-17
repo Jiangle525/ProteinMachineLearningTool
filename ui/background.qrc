@@ -1,0 +1,27 @@
+<RCC>
+  <qresource prefix="imgs">
+    <file>imgs/setting.png</file>
+    <file>imgs/menu/06_close_all_files.png</file>
+    <file>imgs/menu/03_import_preparation.png</file>
+    <file>imgs/logo.png</file>
+    <file>imgs/menu/00_import_train.png</file>
+    <file>imgs/menu/01_import_test.png</file>
+    <file>imgs/menu/03_import_prediction.png</file>
+    <file>imgs/menu/04_import_model.png</file>
+    <file>imgs/menu/05_import_feature.png</file>
+    <file>imgs/menu/08_file_clear.png</file>
+    <file>imgs/menu/09_exit.png</file>
+    <file>imgs/menu/10_save_preparation.png</file>
+    <file>imgs/menu/20_save-feature.png</file>
+    <file>imgs/menu/30_start_training.png</file>
+    <file>imgs/menu/31_save_model.png</file>
+    <file>imgs/menu/32_save_metrics.png</file>
+    <file>imgs/menu/40_start_prediction.png</file>
+    <file>imgs/menu/41_save_prediction_result.png</file>
+    <file>imgs/menu/43_start_prediction.png</file>
+    <file>imgs/menu/50_feature_ranking.png</file>
+    <file>imgs/menu/60_document.png</file>
+    <file>imgs/menu/logout.png</file>
+    <file>imgs/menu/stop.png</file>
+  </qresource>
+</RCC>
