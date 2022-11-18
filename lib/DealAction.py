@@ -1,9 +1,13 @@
-from PySide2.QtCore import Qt
-from PySide2.QtUiTools import QUiLoader
-from PySide2.QtWidgets import QFileDialog, QProgressBar, QTextBrowser, QMessageBox, QDialogButtonBox, QSpinBox, \
-    QComboBox, QTreeWidget, QGroupBox, QWidget, QDialog, QLineEdit, QLabel, QFormLayout, QDoubleSpinBox
+from PyQt5.QtGui import QTransform
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
+from PyQt5 import uic
 from lib.MyThreads import *
 from lib.ShareInfo import *
+from lib.Visualization import *
+import matplotlib
+
+matplotlib.use('Qt5Agg')
 
 
 def DeleteLayoutItem(layout):
@@ -282,7 +286,7 @@ class DealAction:
     def action_Length_Clipping(self):
         if not self.CheckExistence(shareInfo.menuFile.preparationFileData, 'Preparation file isn\'t imported!'):
             return
-        self.ui_Length_Clipping = QUiLoader().load("ui/LengthClipping.ui")
+        self.ui_Length_Clipping = uic.loadUi("ui/LengthClipping.ui")
         self.ui_Length_Clipping.setWindowModality(Qt.ApplicationModal)  # Set as modal window
         self.ui_Length_Clipping.buttonBox.accepted.connect(self.ui_Length_Clipping_buttonBoxAccepted)
         self.ui_Length_Clipping.buttonBox.rejected.connect(self.ui_Length_Clipping_buttonBoxRejected)
@@ -293,7 +297,7 @@ class DealAction:
         if not self.CheckExistence(shareInfo.menuFile.preparationFileData, 'Preparation file isn\'t imported!'):
             return
 
-        # self.ui_CD_HIT = QUiLoader().load("ui/CD_HIT.ui")
+        # self.ui_CD_HIT = uic.loadUi("ui/CD_HIT.ui")
         # self.ui_CD_HIT.setWindowModality(Qt.ApplicationModal)  # Set as modal window
         # self.ui_CD_HIT.buttonBox.accepted.connect(self.ui_CD_HIT_buttonBoxAccepted)
         # self.ui_CD_HIT.buttonBox.rejected.connect(self.ui_CD_HIT_buttonBoxRejected)
@@ -303,7 +307,7 @@ class DealAction:
     def action_Format_File(self):
         if not self.CheckExistence(shareInfo.menuFile.preparationFileData, 'Preparation file isn\'t imported!'):
             return
-        self.ui_Format_File = QUiLoader().load("ui/FormatFile.ui")
+        self.ui_Format_File = uic.loadUi("ui/FormatFile.ui")
         self.ui_Format_File.setWindowModality(Qt.ApplicationModal)  # Set as modal window
         self.ui_Format_File.buttonBox.accepted.connect(self.ui_Format_File_buttonBoxAccepted)
         self.ui_Format_File.buttonBox.rejected.connect(self.ui_Format_File_buttonBoxRejected)
@@ -362,7 +366,7 @@ class DealAction:
     def action_Feature_Extraction(self):
         if not self.CheckExistence(shareInfo.menuFile.trainFileData, 'Train file isn\'t imported!'):
             return
-        self.ui_Feature_Extraction = QUiLoader().load("ui/FeatureExtraction.ui")
+        self.ui_Feature_Extraction = uic.loadUi("ui/FeatureExtraction.ui")
         self.ui_Feature_Extraction.setWindowModality(Qt.ApplicationModal)  # Set as modal window
         self.ui_Feature_Extraction.comboBox_Select_Feature.currentIndexChanged.connect(
             self.ui_Feature_Extraction_comboBox_Select_Feature_currentIndexChanged)
@@ -413,7 +417,7 @@ class DealAction:
         self.thread_Start_Training.start()
 
     def action_Encoding_Method(self):
-        self.ui_EncodingMethod = QUiLoader().load("ui/EncodingMethod.ui")
+        self.ui_EncodingMethod = uic.loadUi("ui/EncodingMethod.ui")
         self.ui_EncodingMethod.setWindowModality(Qt.ApplicationModal)  # Set as modal window
         self.ui_EncodingMethod.comboBox_Select_Encoding.currentIndexChanged.connect(
             self.ui_EncodingMethod_comboBox_Select_Encoding_currentIndexChanged)
@@ -441,7 +445,7 @@ class DealAction:
         my_emit(signal.lineEdit_System_Tips, 'Encoding method setting is canceled!')
 
     def action_Select_Model(self):
-        self.ui_SelectModel = QUiLoader().load("ui/SelectModel.ui")
+        self.ui_SelectModel = uic.loadUi("ui/SelectModel.ui")
         self.ui_SelectModel.setWindowModality(Qt.ApplicationModal)  # Set as modal window
         self.ui_SelectModel.comboBox_Select_Model.currentIndexChanged.connect(
             self.ui_SelectModel_comboBox_Select_Model_currentIndexChanged)
@@ -469,7 +473,7 @@ class DealAction:
         my_emit(signal.lineEdit_System_Tips, 'Model setting is canceled!')
 
     def action_Validation(self):
-        self.ui_Validation = QUiLoader().load("ui/CrossValidation.ui")
+        self.ui_Validation = uic.loadUi("ui/CrossValidation.ui")
         self.ui_Validation.setWindowModality(Qt.ApplicationModal)  # Set as modal window
         self.ui_Validation.buttonBox.accepted.connect(self.ui_Validation_buttonBoxAccepted)
         self.ui_Validation.buttonBox.rejected.connect(self.ui_Validation_buttonBoxRejected)
@@ -532,7 +536,7 @@ class DealAction:
         my_emit(signal.lineEdit_System_Tips, 'Opened document!')
 
     def action_About(self):
-        self.ui_About = QUiLoader().load("ui/About.ui")
+        self.ui_About = uic.loadUi("ui/About.ui")
         self.ui_About.show()
         my_emit(signal.lineEdit_System_Tips, 'Show about information!')
 
@@ -584,11 +588,24 @@ class DealAction:
     # Metrics Display
     def set_tabWidget_Metrics_ROCCurve_ConfusionMatrix_ClassificationReport(self, roc, cm, cr):
         if roc:
-            self.ui_Main.graphicsView_ROC_Curve.setScene(roc)
+            DeleteLayoutItem(self.ui_Main.tab_ROC_Curve.layout())
+            canvasROC = MyCanvas()
+            canvasROC.figure = roc.figure
+            self.ui_Main.tab_ROC_Curve.layout().addWidget(canvasROC)
         if cm:
-            self.ui_Main.graphicsView_Confusion_Matrix.setScene(cm)
-        # if cr:
-        #     self.ui_Main.tableWidget_Classification_Report.append(cr)
+            DeleteLayoutItem(self.ui_Main.tab_Confusion_Matrix.layout())
+            canvasCM = MyCanvas()
+            canvasCM.figure = cm.figure
+            self.ui_Main.tab_Confusion_Matrix.layout().addWidget(canvasCM)
+        if cr:
+            print(cr)
+            for row in range(2):
+                for col, value in enumerate(cr.values()):
+                    self.ui_Main.tableWidget_Classification_Report.setItem(row, col, QTableWidgetItem(
+                        '{:.2f}%'.format(value[row] * 100)))
+            for col, value in enumerate(cr.values()):
+                self.ui_Main.tableWidget_Classification_Report.setItem(2, col, QTableWidgetItem(
+                    '{:.2f}%'.format(sum(value) / 2 * 100)))
 
     # Message Display
     def set_textBrowser_Message(self, text):

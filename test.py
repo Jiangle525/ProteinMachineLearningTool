@@ -1,11 +1,7 @@
-import matplotlib.pyplot as plt
-from PySide2.QtWidgets import QGraphicsScene
-from matplotlib.figure import Figure
+from sklearn.metrics import confusion_matrix
 
-from lib.DataProcessing import LoadData
+from lib.Visualization import draw_confusion_matrix
 
-roc_fig = plt.figure()
-fig = plt.subplot(1, 1, 1)
-# graphicsSceneROC = QGraphicsScene()
-# graphicsSceneROC.addWidget(fig)
-print(type(roc_fig))
+cm = confusion_matrix([1, 0, 1, 1], [0, 1, 1, 1])
+can = draw_confusion_matrix(cm)
+can.figure.savefig('result111.png')

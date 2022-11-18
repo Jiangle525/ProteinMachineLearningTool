@@ -23,10 +23,10 @@ class MenuFeature:
 
 class MenuModel:
     def __init__(self):
-        self.encodingName = None
-        self.encodingParams = None
-        self.modelName = None
-        self.modelParams = None
+        self.encodingName = 'AAC'
+        self.encodingParams = {}
+        self.modelName = 'LR'
+        self.modelParams = {}
         self.validation = 5
 
         self.trainedModel = None

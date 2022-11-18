@@ -1,8 +1,18 @@
 import itertools
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
 from sklearn.metrics import auc, confusion_matrix, roc_curve
 import numpy as np
 import math
+
+
+class MyCanvas(FigureCanvas):
+
+    def __init__(self, width=6, height=4, dpi=50):
+        fig = Figure(figsize=(width, height), dpi=dpi)
+        self.axes = fig.add_subplot(111)
+        super(MyCanvas, self).__init__(fig)
 
 
 def draw_history(history):
@@ -49,23 +59,22 @@ def draw_roc(fprs, tprs):
 
     colors = ['darkorange', 'aqua', 'cornflowerblue',
               'blueviolet', 'deeppink', 'cyan']
-    roc_fig = plt.figure()
-    fig = plt.subplot(1, 1, 1)
-    fig.set_title('ROC curve')
-    fig.set_xlim([0.0, 1.0])
-    fig.set_ylim([0.0, 1.0])
-    fig.set_xlabel('False Positive Rate')
-    fig.set_ylabel('True Positive Rate')
-    fig.plot([0, 1], [0, 1], linestyle='--', lw=2, color='r',
-             label='Random', alpha=0.8)
+    canvasROC = MyCanvas()
+    canvasROC.axes.set_title('ROC curve')
+    canvasROC.axes.set_xlim([0.0, 1.0])
+    canvasROC.axes.set_ylim([0.0, 1.0])
+    canvasROC.axes.set_xlabel('False Positive Rate')
+    canvasROC.axes.set_ylabel('True Positive Rate')
+    canvasROC.axes.plot([0, 1], [0, 1], linestyle='--', lw=2, color='r',
+                        label='Random', alpha=0.8)
 
     aucs = []
     mean_fpr = np.linspace(0, 1, max([len(i) for i in fprs]))
     interp_tprs = []
 
     for i in range(len(fprs)):
-        fig.plot(fprs[i], tprs[i], lw=1, alpha=0.5, color=colors[i % len(colors)],
-                 label='{} fold (AUC = {:.2f})'.format(i + 1, auc(fprs[i], tprs[i])))
+        canvasROC.axes.plot(fprs[i], tprs[i], lw=1, alpha=0.5, color=colors[i % len(colors)],
+                            label='{} fold (AUC = {:.2f})'.format(i + 1, auc(fprs[i], tprs[i])))
         interp_tpr = np.interp(mean_fpr, fprs[i], tprs[i])
         interp_tprs.append(interp_tpr)
         aucs.append(auc(fprs[i], tprs[i]))
@@ -76,18 +85,17 @@ def draw_roc(fprs, tprs):
     std_auc = round(np.std(aucs), 2)
     std_auc = 0.01 if not std_auc else std_auc
 
-    fig.plot(mean_fpr, mean_tpr, color='b', label=r'Mean (AUC = {:.2f} ± {})'.format(
+    canvasROC.axes.plot(mean_fpr, mean_tpr, color='b', label=r'Mean (AUC = {:.2f} ± {})'.format(
         mean_auc, std_auc), lw=2, alpha=0.8)
 
     std_tpr = np.std(interp_tprs, axis=0)
     tprs_upper = np.minimum(mean_tpr + std_tpr, 1)
     tprs_lower = np.maximum(mean_tpr - std_tpr, 0)
-    fig.fill_between(mean_fpr, tprs_lower, tprs_upper, color='slategray', alpha=0.2,
-                     label=r'± 1 std. dev.')
+    canvasROC.axes.fill_between(mean_fpr, tprs_lower, tprs_upper, color='slategray', alpha=0.2,
+                                label=r'± 1 std. dev.')
 
-    fig.legend(loc="lower right")
-
-    return roc_fig
+    canvasROC.axes.legend(loc="lower right")
+    return canvasROC
 
 
 def draw_confusion_matrix(cm, labels=('pos', 'neg'), percentage=False, cmap=plt.cm.Blues):
@@ -103,28 +111,27 @@ def draw_confusion_matrix(cm, labels=('pos', 'neg'), percentage=False, cmap=plt.
         _type_: fig
     """
 
-    cm_fig = plt.figure()
-    fig = plt.subplot(1, 1, 1)
-    fig.set_title('Confusion matrix')
-    fig.set_xlabel('Predicted label')
-    fig.set_ylabel('True label')
+    canvasCM = MyCanvas()
+    canvasCM.axes.set_title('Confusion matrix')
+    canvasCM.axes.set_xlabel('Predicted label')
+    canvasCM.axes.set_ylabel('True label')
     # ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
     if percentage:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-    fig.imshow(cm, interpolation='nearest', cmap=cmap)
+    canvasCM.axes.imshow(cm, interpolation='nearest', cmap=cmap)
     ticks = np.arange(len(labels))
-    fig.set_xticks(ticks=ticks)
-    fig.set_yticks(ticks=ticks)
-    fig.set_xticklabels(labels)
-    fig.set_yticklabels(labels)
+    canvasCM.axes.set_xticks(ticks=ticks)
+    canvasCM.axes.set_yticks(ticks=ticks)
+    canvasCM.axes.set_xticklabels(labels)
+    canvasCM.axes.set_yticklabels(labels)
     fmt = '.2%' if percentage else 'd'
     thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        fig.text(j, i, format(cm[i][j], fmt),
+        canvasCM.axes.text(j, i, format(cm[i][j], fmt),
                  horizontalalignment="center",
                  color="white" if cm[i, j] > thresh else "black")
 
-    return cm_fig
+    return canvasCM
 
 
 def test_draw_history(data):

@@ -1,16 +1,12 @@
 import copy
-import time
 
-import numpy as np
-from PySide2.QtWidgets import QGraphicsScene
-from sklearn.metrics import roc_curve, auc
+from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import KFold
 
 from lib.MySignal import *
-from lib.Visualization import draw_roc
 from lib.FeatureExtraction import *
-from lib.Visualization import *
 from lib.ModelDefinition import *
+from lib.Visualization import *
 
 
 def LoadData(fileName, fileIndex=0):
@@ -73,6 +69,26 @@ def k_fold_cross_validation(base_model, X, y, k=10):
     return best_model, fprs, tprs
 
 
+def GetMetrics(model, X, y):
+    cr = dict()
+    y_pred = model.predict(X)
+    cm = confusion_matrix(y, y_pred)
+    y_pred_prob = model.predict_proba(X)[:, 1]
+    TN, FP, FN, TP = cm[0][0], cm[0][1], cm[1][0], cm[1][1]
+    cr['Accuracy'] = (TP + TN) / (TN + FP + FN + TP), (TP + TN) / (TN + FP + FN + TP)
+    cr['Precision'] = TN / (FN + TN), TP / (FP + TP)
+    cr['Recall'] = TN / (TN + FP), TP / (TP + FN)
+    cr['F1'] = 2 * cr['Precision'][0] * cr['Recall'][0] / (cr['Precision'][0] + cr['Recall'][0]), \
+               2 * cr['Precision'][1] * cr['Recall'][1] / (cr['Precision'][1] + cr['Recall'][1])
+    if (TP * TN - FP * FN) != 0:
+        cr['MCC'] = (TP * TN - FP * FN) / (math.sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN))), \
+                    (TP * TN - FP * FN) / (math.sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN)))
+    else:
+        cr['MCC'] = 0, 0
+    cr['AUC'] = roc_auc_score(y, y_pred_prob), roc_auc_score(y, y_pred_prob)
+    return cm, cr
+
+
 def StartTrain(trainFileData, testFileData, encodingName, encodingParams, modelName, modelParams, validation):
     train_sequences, train_labels = GetSequencesLabels(trainFileData)
     test_sequences, test_labels = GetSequencesLabels(testFileData)
@@ -84,9 +100,7 @@ def StartTrain(trainFileData, testFileData, encodingName, encodingParams, modelN
     classifier_func = globals()[modelName]
     model = classifier_func(**modelParams)
     bestModel, fprs, tprs = k_fold_cross_validation(model, X_train, y_train, k=validation)
-
-    fig = draw_roc(fprs, tprs)
-    my_emit(signal.lineEdit_System_Tips, 'Training is overed!')
-    graphicsSceneROC = QGraphicsScene(fig)
-
-    # my_emit(signal.tabWidget_Metrics_ROCCurve_ConfusionMatrix_ClassificationReport, )
+    cm, cr = GetMetrics(bestModel, X_test, y_test)
+    canvasROC = draw_roc(fprs, tprs)
+    canvasCM = draw_confusion_matrix(cm)
+    my_emit(signal.tabWidget_Metrics_ROCCurve_ConfusionMatrix_ClassificationReport, *[canvasROC, canvasCM, cr])

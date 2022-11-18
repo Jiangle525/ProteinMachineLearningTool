@@ -1,10 +1,10 @@
-from PySide2.QtCore import Qt, QCoreApplication
-from PySide2.QtWidgets import QApplication, QFileDialog, QMainWindow, QMessageBox, QSpinBox, QTableWidgetItem, \
-    QTextBrowser
-from PySide2.QtUiTools import QUiLoader
-import ui.background  # 加载图片
+import sys
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5 import uic
 from lib.DealAction import DealAction
 from lib.MySignal import signal
+import ui.background  # 加载图片
 
 
 class My_Main_Window(QMainWindow, DealAction):
@@ -13,7 +13,7 @@ class My_Main_Window(QMainWindow, DealAction):
         super().__init__()
 
         # Load main window
-        self.ui_Main = QUiLoader().load("ui/MainWindow.ui")
+        self.ui_Main = uic.loadUi("ui/MainWindow.ui")
 
         '''Menubar'''
         # File
@@ -109,11 +109,11 @@ if __name__ == '__main__':
     # 使用高像素图片
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
-    app = QApplication([])
+    app = QApplication(sys.argv)
     app.setStyle('Fusion')  # 设置 fusion 风格
     # app.setStyle('Windows')  # 设置 Windows 风格
     # app.setStyle('WindowsXP')  # 设置 WindowsXP 风格
     # app.setStyle('WindowsVista')  # 设置 WindowsVista 风格
     my_Main_Window = My_Main_Window()
     my_Main_Window.ui_Main.show()
-    app.exec_()
+    sys.exit(app.exec_())

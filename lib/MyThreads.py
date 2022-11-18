@@ -1,21 +1,11 @@
 import os
-import random
-import time
-import math
-from PySide2.QtCore import QThread
-from PySide2.QtWidgets import QGraphicsView
-from matplotlib import pyplot as plt
-import pyqtgraph as pg
-from matplotlib.backends.backend_template import FigureCanvas
-
+from PyQt5.QtCore import QThread
 from lib.DataProcessing import *
 from lib.ShareInfo import *
 from lib.MySignal import *
 from lib.FeatureExtraction import *
 from lib.Visualization import *
 from lib.ModelDefinition import *
-import numpy as np
-import pandas as pd
 
 '''File'''
 
@@ -218,27 +208,9 @@ class Thread_Feature_Extraction(QThread):
         self.dictParams = dictParams
 
     def run(self):
-        encoded_data = None
         listSequences = [i[1] for i in shareInfo.menuFile.trainFileData]
-        if self.featureName == 'AAC':
-            encoded_data = AAC(listSequences)
-        if self.featureName == 'CKSAAP':
-            gap = self.dictParams['Gap:']
-            encoded_data = CKSAAP(listSequences, int(gap))
-        if self.featureName == 'CTriad':
-            gap = self.dictParams['Gap:']
-            encoded_data = CTriad(listSequences, int(gap))
-        if self.featureName == 'DDE':
-            encoded_data = DDE(listSequences)
-        if self.featureName == 'KSCTriad':
-            gap = self.dictParams['Gap:']
-            encoded_data = KSCTriad(listSequences, int(gap))
-        if self.featureName == 'TPC':
-            encoded_data = TPC(listSequences)
-        if self.featureName == 'Word2Vector':
-            k = self.dictParams['K-mer:']
-            vec_size = self.dictParams['Vector Size:']
-            encoded_data = Word2Vector(listSequences, k_mer=int(k), vector_size=int(vec_size))
+        encodingFunc = globals()[self.featureName]
+        encoded_data = encodingFunc(listSequences, **self.dictParams)
         shareInfo.menuFeature.ndarrayResult = encoded_data
         my_emit(signal.textBrowser_Message, str(encoded_data))
 

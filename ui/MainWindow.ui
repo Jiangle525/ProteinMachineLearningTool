@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>850</width>
-    <height>580</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>850</width>
-    <height>580</height>
+    <width>800</width>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -184,8 +184,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>224</width>
-                     <height>169</height>
+                     <width>176</width>
+                     <height>179</height>
                     </rect>
                    </property>
                    <layout class="QFormLayout" name="formLayout_5">
@@ -354,8 +354,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>224</width>
-                     <height>168</height>
+                     <width>176</width>
+                     <height>178</height>
                     </rect>
                    </property>
                    <layout class="QFormLayout" name="formLayout_2">
@@ -446,6 +446,12 @@
             <property name="enabled">
              <bool>true</bool>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>250</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>10</pointsize>
@@ -458,7 +464,7 @@ font-weight: bold;
 }</string>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tab_ROC_Curve">
              <attribute name="title">
@@ -480,9 +486,6 @@ font-weight: bold;
               <property name="bottomMargin">
                <number>0</number>
               </property>
-              <item>
-               <widget class="QGraphicsView" name="graphicsView_ROC_Curve"/>
-              </item>
              </layout>
             </widget>
             <widget class="QWidget" name="tab_Confusion_Matrix">
@@ -505,9 +508,6 @@ font-weight: bold;
               <property name="bottomMargin">
                <number>0</number>
               </property>
-              <item>
-               <widget class="QGraphicsView" name="graphicsView_Confusion_Matrix"/>
-              </item>
              </layout>
             </widget>
             <widget class="QWidget" name="tab_Classification_Report">
@@ -585,7 +585,7 @@ color:black;
                 </attribute>
                 <row>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Negative</string>
                  </property>
                  <property name="font">
                   <font>
@@ -599,7 +599,7 @@ color:black;
                 </row>
                 <row>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Positive</string>
                  </property>
                  <property name="font">
                   <font>
@@ -696,7 +696,7 @@ color:black;
                 </column>
                 <column>
                  <property name="text">
-                  <string>MCC</string>
+                  <string>AUC</string>
                  </property>
                  <property name="font">
                   <font>
@@ -711,7 +711,7 @@ color:black;
                 </column>
                 <column>
                  <property name="text">
-                  <string>AUC</string>
+                  <string>MCC</string>
                  </property>
                  <property name="font">
                   <font>
@@ -726,7 +726,7 @@ color:black;
                 </column>
                 <item row="0" column="0">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -734,7 +734,7 @@ color:black;
                 </item>
                 <item row="0" column="1">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -742,7 +742,7 @@ color:black;
                 </item>
                 <item row="0" column="2">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -750,7 +750,7 @@ color:black;
                 </item>
                 <item row="0" column="3">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -758,7 +758,7 @@ color:black;
                 </item>
                 <item row="0" column="4">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -766,7 +766,7 @@ color:black;
                 </item>
                 <item row="0" column="5">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -774,7 +774,7 @@ color:black;
                 </item>
                 <item row="1" column="0">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -782,7 +782,7 @@ color:black;
                 </item>
                 <item row="1" column="1">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -790,7 +790,7 @@ color:black;
                 </item>
                 <item row="1" column="2">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -798,7 +798,7 @@ color:black;
                 </item>
                 <item row="1" column="3">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -806,7 +806,7 @@ color:black;
                 </item>
                 <item row="1" column="4">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -814,7 +814,7 @@ color:black;
                 </item>
                 <item row="1" column="5">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -822,7 +822,7 @@ color:black;
                 </item>
                 <item row="2" column="0">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -830,7 +830,7 @@ color:black;
                 </item>
                 <item row="2" column="1">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -838,7 +838,7 @@ color:black;
                 </item>
                 <item row="2" column="2">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -846,7 +846,7 @@ color:black;
                 </item>
                 <item row="2" column="3">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -854,7 +854,7 @@ color:black;
                 </item>
                 <item row="2" column="4">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -862,7 +862,7 @@ color:black;
                 </item>
                 <item row="2" column="5">
                  <property name="text">
-                  <string>66.66%</string>
+                  <string/>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -876,6 +876,12 @@ color:black;
           </item>
           <item row="2" column="6">
            <widget class="QGroupBox" name="groupBox_Feature">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>250</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Arial Black</family>
@@ -920,6 +926,12 @@ font-weight: bold;
           </item>
           <item row="0" column="4">
            <widget class="QTabWidget" name="tabWidget_File">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>250</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>10</pointsize>
@@ -1078,6 +1090,12 @@ p, li { white-space: pre-wrap; }
           </item>
           <item row="2" column="4">
            <widget class="QGroupBox" name="groupBox_Message">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>250</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Arial Black</family>

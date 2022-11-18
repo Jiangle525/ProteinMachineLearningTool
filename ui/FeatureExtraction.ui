@@ -115,7 +115,7 @@
               </item>
               <item>
                <property name="text">
-                <string>Word Vector</string>
+                <string>Word2Vector</string>
                </property>
               </item>
              </widget>
