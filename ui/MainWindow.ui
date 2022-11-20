@@ -79,11 +79,11 @@
              <item>
               <widget class="QGroupBox" name="groupBox_Feature_Setting">
                <property name="title">
-                <string>Feature Setting</string>
+                <string>Encoding Setting</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_18">
                 <item alignment="Qt::AlignBottom">
-                 <widget class="QWidget" name="widget_Select_Feature" native="true">
+                 <widget class="QWidget" name="widget_Select_Encoding" native="true">
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
@@ -113,7 +113,7 @@
                     <number>4</number>
                    </property>
                    <item row="0" column="1">
-                    <widget class="QComboBox" name="comboBox_Select_Feature">
+                    <widget class="QComboBox" name="comboBox_Select_Encoding">
                      <item>
                       <property name="text">
                        <string>AAC</string>
@@ -152,12 +152,12 @@
                     </widget>
                    </item>
                    <item row="0" column="0">
-                    <widget class="QLabel" name="label_Select_Feature">
+                    <widget class="QLabel" name="label_Select_Encoding">
                      <property name="autoFillBackground">
                       <bool>false</bool>
                      </property>
                      <property name="text">
-                      <string>Feature:</string>
+                      <string>Encoding:</string>
                      </property>
                     </widget>
                    </item>
@@ -172,19 +172,19 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QScrollArea" name="scrollArea_Feature_Params">
+                 <widget class="QScrollArea" name="scrollArea_Encoding_Params">
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
                   </property>
                   <property name="widgetResizable">
                    <bool>true</bool>
                   </property>
-                  <widget class="QWidget" name="scrollAreaWidgetContents_Feature_Params">
+                  <widget class="QWidget" name="scrollAreaWidgetContents_Encoding_Params">
                    <property name="geometry">
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>176</width>
+                     <width>224</width>
                      <height>179</height>
                     </rect>
                    </property>
@@ -354,7 +354,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>176</width>
+                     <width>224</width>
                      <height>178</height>
                     </rect>
                    </property>
@@ -448,8 +448,8 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
-              <height>250</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">
@@ -464,7 +464,7 @@ font-weight: bold;
 }</string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="tab_ROC_Curve">
              <attribute name="title">
@@ -557,7 +557,7 @@ color:black;
                  <enum>Qt::SolidLine</enum>
                 </property>
                 <property name="sortingEnabled">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
@@ -583,15 +583,12 @@ color:black;
                 <attribute name="verticalHeaderMinimumSectionSize">
                  <number>40</number>
                 </attribute>
+                <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                 <bool>false</bool>
+                </attribute>
                 <row>
                  <property name="text">
-                  <string>Negative</string>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
+                  <string>Negitive</string>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -601,12 +598,6 @@ color:black;
                  <property name="text">
                   <string>Positive</string>
                  </property>
-                 <property name="font">
-                  <font>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
                  </property>
@@ -614,12 +605,6 @@ color:black;
                 <row>
                  <property name="text">
                   <string>Average</string>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
                  </property>
                  <property name="textAlignment">
                   <set>AlignCenter</set>
@@ -724,150 +709,6 @@ color:black;
                   <set>AlignCenter</set>
                  </property>
                 </column>
-                <item row="0" column="0">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="0" column="1">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="0" column="2">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="0" column="3">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="0" column="4">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="0" column="5">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="1" column="0">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="1" column="1">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="1" column="2">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="1" column="3">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="1" column="4">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="1" column="5">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="2" column="0">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="2" column="1">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="2" column="2">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="2" column="3">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="2" column="4">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
-                <item row="2" column="5">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                </item>
                </widget>
               </item>
              </layout>
@@ -878,8 +719,8 @@ color:black;
            <widget class="QGroupBox" name="groupBox_Feature">
             <property name="minimumSize">
              <size>
-              <width>300</width>
-              <height>250</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">
@@ -928,8 +769,8 @@ font-weight: bold;
            <widget class="QTabWidget" name="tabWidget_File">
             <property name="minimumSize">
              <size>
-              <width>300</width>
-              <height>250</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">
@@ -1092,8 +933,8 @@ p, li { white-space: pre-wrap; }
            <widget class="QGroupBox" name="groupBox_Message">
             <property name="minimumSize">
              <size>
-              <width>300</width>
-              <height>250</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">

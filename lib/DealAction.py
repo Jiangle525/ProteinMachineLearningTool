@@ -1,4 +1,3 @@
-from PyQt5.QtGui import QTransform
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from PyQt5 import uic
@@ -10,6 +9,14 @@ import matplotlib
 matplotlib.use('Qt5Agg')
 
 
+class MyQTableWidgetItem(QTableWidgetItem):
+    def __init__(self, text):
+        super(MyQTableWidgetItem, self).__init__(text)
+
+    def __lt__(self, other):
+        return float(self.text().strip('%')) < float(other.text().strip('%'))
+
+
 def DeleteLayoutItem(layout):
     for i in list(range(layout.count()))[::-1]:
         item = layout.itemAt(i)
@@ -19,6 +26,29 @@ def DeleteLayoutItem(layout):
 
 
 def GetLayoutItemValue(formLayout):
+    dictItems = dict()
+    for i in range(formLayout.rowCount()):
+        labelItem = formLayout.itemAt(2 * i)
+        filedItem = formLayout.itemAt(2 * i + 1)
+        if labelItem:
+            label = labelItem.widget().text()
+            if type(filedItem.widget()) == QComboBox:
+                filed = filedItem.widget().currentText()  # QComboBox
+                if filed == 'True':
+                    filed = True
+                if filed == 'False':
+                    filed = False
+            else:
+                filed = filedItem.widget().text()
+                if filed.isdigit():
+                    filed = int(filed)
+                else:
+                    filed = float(filed)
+            dictItems[label[:-1]] = filed
+    return dictItems
+
+
+def SetLayoutItemValue(formLayout, listWidget):
     dictItems = dict()
     for i in range(formLayout.rowCount()):
         labelItem = formLayout.itemAt(2 * i)
@@ -190,12 +220,38 @@ def SelectModel(comboBox, formLayout):
 class DealAction:
     def __init__(self):
         self.ui_Main = None
+        self.ui_Length_Clipping = None
+        self.ui_Format_File = None
+        self.ui_CD_HIT = None
+        self.ui_Feature_Extraction = None
+        self.ui_EncodingMethod = None
+        self.ui_SelectModel = None
+        self.ui_Validation = None
+        self.ui_Document = None
+        self.ui_About = None
+
+        self.thread_Import_Train_File = None
+        self.thread_Import_Test_File = None
+        self.thread_Import_Prediction_File = None
+        self.thread_Import_Prediction_File = None
+        self.thread_Import_Model = None
+        self.thread_Import_Feature = None
+        self.thread_Duplication = None
+        self.thread_Length_Clipping = None
+        self.thread_Save_Preparation = None
+        self.thread_Format_File = None
+        self.thread_CD_HIT = None
+        self.thread_Save_Feature = None
+        self.thread_Feature_Extraction = None
+        self.thread_Start_Training = None
 
     # File
     def action_Import_Train_File(self):
         my_emit(signal.lineEdit_System_Tips, 'Selecting train file.')
-        file_names_tuple = QFileDialog().getOpenFileNames(self.ui_Main, 'Select Train Files', './',
-                                                          "Fasta files (*.fasta);;Fasta files (*.fa)")
+        file_names_tuple = QFileDialog().getOpenFileNames(parent=self.ui_Main,
+                                                          caption='Select Train Files',
+                                                          directory='./',
+                                                          filter="Fasta files (*.fasta);;Fasta files (*.fa)")
         if not file_names_tuple[0]:
             my_emit(signal.lineEdit_System_Tips, 'Select train file is canceled! No file selected!')
             return
@@ -206,8 +262,10 @@ class DealAction:
 
     def action_Import_Test_File(self):
         my_emit(signal.lineEdit_System_Tips, 'Selecting test file.')
-        file_names_tuple = QFileDialog().getOpenFileNames(self.ui_Main, 'Select Test Files', './',
-                                                          "Fasta files (*.fasta);;Fasta files (*.fa)")
+        file_names_tuple = QFileDialog().getOpenFileNames(parent=self.ui_Main,
+                                                          caption='Select Test Files',
+                                                          directory='./',
+                                                          filter="Fasta files (*.fasta);;Fasta files (*.fa)")
         if not file_names_tuple[0]:
             my_emit(signal.lineEdit_System_Tips, 'Select test file is canceled! No file selected!')
             return
@@ -218,8 +276,10 @@ class DealAction:
 
     def action_Import_Prediction_File(self):
         my_emit(signal.lineEdit_System_Tips, 'Selecting prediction file.')
-        file_names_tuple = QFileDialog().getOpenFileNames(self.ui_Main, 'Select Prediction Files', './',
-                                                          "Fasta files (*.fasta);;Fasta files (*.fa)")
+        file_names_tuple = QFileDialog().getOpenFileNames(parent=self.ui_Main,
+                                                          caption='Select Prediction Files',
+                                                          directory='./',
+                                                          filter="Fasta files (*.fasta);;Fasta files (*.fa)")
         if not file_names_tuple[0]:
             my_emit(signal.lineEdit_System_Tips, 'Select prediction file is canceled! No file selected!')
             return
@@ -230,8 +290,10 @@ class DealAction:
 
     def action_Import_Preparation_File(self):
         my_emit(signal.lineEdit_System_Tips, 'Selecting preparation file.')
-        file_names_tuple = QFileDialog().getOpenFileNames(self.ui_Main, 'Select Preparation Files', './',
-                                                          "Fasta files (*.fasta);;Fasta files (*.fa)")
+        file_names_tuple = QFileDialog().getOpenFileNames(parent=self.ui_Main,
+                                                          caption='Select Preparation Files',
+                                                          directory='./',
+                                                          filter="Fasta files (*.fasta);;Fasta files (*.fa)")
         if not file_names_tuple[0]:
             my_emit(signal.lineEdit_System_Tips, 'Select preparation file is canceled! No file selected!')
             return
@@ -242,8 +304,10 @@ class DealAction:
 
     def action_Import_Model(self):
         my_emit(signal.lineEdit_System_Tips, 'Selecting model file.')
-        file_name_tuple = QFileDialog().getOpenFileName(self.ui_Main, 'Select Model File', './',
-                                                        "Model file (*.model);;H5 file (*.h5);;Pickle file (*.pickle)")
+        file_name_tuple = QFileDialog().getOpenFileName(parent=self.ui_Main,
+                                                        caption='Select Model File',
+                                                        directory='./',
+                                                        filter="Model file (*.model);;H5 file (*.h5);;Pickle file (*.pickle)")
         if not file_name_tuple[0]:
             my_emit(signal.lineEdit_System_Tips, 'Select model file is canceled! No file selected!')
             return
@@ -252,8 +316,10 @@ class DealAction:
 
     def action_Import_Feature(self):
         my_emit(signal.lineEdit_System_Tips, 'Selecting feature file.')
-        file_name_tuple = QFileDialog().getOpenFileName(self.ui_Main, 'Select Feature File', './',
-                                                        "Text file (*.txt);;All file (*)")
+        file_name_tuple = QFileDialog().getOpenFileName(parent=self.ui_Main,
+                                                        caption='Select Feature File',
+                                                        directory='./',
+                                                        filter="Text file (*.txt);;All file (*)")
         if not file_name_tuple[0]:
             my_emit(signal.lineEdit_System_Tips, 'Select feature file is canceled! No file selected!')
             return
@@ -297,11 +363,11 @@ class DealAction:
         if not self.CheckExistence(shareInfo.menuFile.preparationFileData, 'Preparation file isn\'t imported!'):
             return
 
-        # self.ui_CD_HIT = uic.loadUi("ui/CD_HIT.ui")
-        # self.ui_CD_HIT.setWindowModality(Qt.ApplicationModal)  # Set as modal window
-        # self.ui_CD_HIT.buttonBox.accepted.connect(self.ui_CD_HIT_buttonBoxAccepted)
-        # self.ui_CD_HIT.buttonBox.rejected.connect(self.ui_CD_HIT_buttonBoxRejected)
-        # self.ui_CD_HIT.show()
+        self.ui_CD_HIT = uic.loadUi("ui/CD_HIT.ui")
+        self.ui_CD_HIT.setWindowModality(Qt.ApplicationModal)  # Set as modal window
+        self.ui_CD_HIT.buttonBox.accepted.connect(self.ui_CD_HIT_buttonBoxAccepted)
+        self.ui_CD_HIT.buttonBox.rejected.connect(self.ui_CD_HIT_buttonBoxRejected)
+        self.ui_CD_HIT.show()
         my_emit(signal.lineEdit_System_Tips, 'CD-HIT setting.')
 
     def action_Format_File(self):
@@ -318,8 +384,10 @@ class DealAction:
         if not self.CheckExistence(shareInfo.menuPreparation.listResult, 'Preparation result isn\'t exist!'):
             return
         my_emit(signal.lineEdit_System_Tips, 'Selecting preparation save file.')
-        fileNameTuple = QFileDialog().getSaveFileName(self.ui_Main, 'Save preparation result', './',
-                                                      "Fasta files (*.fasta);;Fasta files (*.fa)")
+        fileNameTuple = QFileDialog().getSaveFileName(parent=self.ui_Main,
+                                                      caption='Save preparation result',
+                                                      directory='./',
+                                                      filter="Fasta files (*.fasta);;Fasta files (*.fa)")
         if not fileNameTuple[0]:
             my_emit(signal.lineEdit_System_Tips, 'No save path selected!')
             return
@@ -330,7 +398,6 @@ class DealAction:
         self.action_Clear_Output()
         minimumLength = self.ui_Length_Clipping.spinBox_Minimum_Length.text()
         maximumLength = self.ui_Length_Clipping.spinBox_Maximum_Length.text()
-        self.ui_Length_Clipping.close()
         self.thread_Length_Clipping = Thread_Length_Clipping(int(minimumLength), int(maximumLength))
         self.thread_Length_Clipping.start()
 
@@ -340,11 +407,9 @@ class DealAction:
 
     def ui_CD_HIT_buttonBoxAccepted(self):
         self.action_Clear_Output()
-        minimumLength = self.ui_Length_Clipping.spinBox_Minimum_Length.text()
-        maximumLength = self.ui_Length_Clipping.spinBox_Maximum_Length.text()
-        self.ui_Length_Clipping.close()
-        self.thread_Length_Clipping = Thread_Length_Clipping(int(minimumLength), int(maximumLength))
-        self.thread_Length_Clipping.start()
+
+        self.thread_CD_HIT = Thread_CD_HIT()
+        self.thread_CD_HIT.start()
 
     def ui_CD_HIT_buttonBoxRejected(self):
         self.ui_CD_HIT.close()
@@ -354,7 +419,6 @@ class DealAction:
         self.action_Clear_Output()
         label = self.ui_Format_File.spinBox_Label.text()
         dataType = self.ui_Format_File.comboBox_Type.currentText()
-        self.ui_Format_File.close()
         self.thread_Format_File = Thread_Format_File(label, dataType)
         self.thread_Format_File.start()
 
@@ -393,10 +457,9 @@ class DealAction:
 
     def ui_Feature_Extraction_buttonBoxAccepted(self):
         self.action_Clear_Output()
-        featureName = self.ui_Feature_Extraction.comboBox_Select_Feature.currentText()
-        dictParams = GetLayoutItemValue(self.ui_Feature_Extraction.scrollAreaWidgetContents_Feature_Params.layout())
-        self.ui_Feature_Extraction.close()
-        self.thread_Feature_Extraction = Thread_Feature_Extraction(featureName, dictParams)
+        shareInfo.menuFeature.featureName = self.ui_Feature_Extraction.comboBox_Select_Feature.currentText()
+        shareInfo.menuFeature.featureParams = GetLayoutItemValue(self.ui_Feature_Extraction.scrollAreaWidgetContents_Feature_Params.layout())
+        self.thread_Feature_Extraction = Thread_Feature_Extraction(shareInfo.menuFeature.featureName, shareInfo.menuFeature.featureParams)
         self.thread_Feature_Extraction.start()
 
     def ui_Feature_Extraction_buttonBoxRejected(self):
@@ -431,11 +494,9 @@ class DealAction:
                       self.ui_EncodingMethod.scrollAreaWidgetContents_Encoding_Params.layout())
 
     def ui_EncodingMethod_buttonBoxAccepted(self):
-        self.action_Clear_Output()
         shareInfo.menuModel.encodingName = self.ui_EncodingMethod.comboBox_Select_Encoding.currentText()
         shareInfo.menuModel.encodingParams = GetLayoutItemValue(
             self.ui_EncodingMethod.scrollAreaWidgetContents_Encoding_Params.layout())
-        self.ui_EncodingMethod.close()
         my_emit(signal.lineEdit_System_Tips, 'Encoding setting is OK!')
         # my_emit(signal.textBrowser_Message, 'Encoding Name:' + str(shareInfo.menuModel.encodingName) + '\n' + '\n'.join(
         #     [k + v for k, v in shareInfo.menuModel.encodingParams.items()]))
@@ -459,11 +520,9 @@ class DealAction:
                     self.ui_SelectModel.scrollAreaWidgetContents_Model_Params.layout())
 
     def ui_SelectModel_buttonBoxAccepted(self):
-        self.action_Clear_Output()
         shareInfo.menuModel.modelName = self.ui_SelectModel.comboBox_Select_Model.currentText()
         shareInfo.menuModel.modelParams = GetLayoutItemValue(
             self.ui_SelectModel.scrollAreaWidgetContents_Model_Params.layout())
-        self.ui_SelectModel.close()
         my_emit(signal.lineEdit_System_Tips, 'Model setting is OK!')
         # my_emit(signal.textBrowser_Message, 'Model Name:' + str(shareInfo.menuModel.modelName) + '\n' + '\n'.join(
         #     [k + v for k, v in shareInfo.menuModel.modelParams.items()]))
@@ -482,7 +541,6 @@ class DealAction:
 
     def ui_Validation_buttonBoxAccepted(self):
         shareInfo.menuModel.validation = int(self.ui_Validation.spinBox.text())
-        self.ui_Validation.close()
         my_emit(signal.lineEdit_System_Tips, 'Cross Validation setting is OK!')
         my_emit(signal.textBrowser_Message, 'Cross Validation: {}'.format(shareInfo.menuModel.validation))
 
@@ -530,6 +588,8 @@ class DealAction:
 
     # Help
     def action_Document(self):
+        self.ui_Document = uic.loadUi("ui/About.ui")
+        self.ui_Document.show()
         import webbrowser
         url = 'https://www.w3schools.com/'
         webbrowser.open_new_tab(url)
@@ -545,13 +605,19 @@ class DealAction:
         self.ui_Main.textBrowser_Message.setText('stop')
 
     # 交互区域
-    def comboBox_Select_Feature(self):
-        SelectFeature(self.ui_Main.comboBox_Select_Feature,
-                      self.ui_Main.scrollAreaWidgetContents_Feature_Params.layout())
+    def comboBox_Select_Encoding(self):
+        SelectFeature(self.ui_Main.comboBox_Select_Encoding,
+                      self.ui_Main.scrollAreaWidgetContents_Encoding_Params.layout())
+        shareInfo.menuModel.encodingName = self.ui_Main.comboBox_Select_Encoding.currentText()
+        shareInfo.menuModel.encodingParams = GetLayoutItemValue(self.ui_Main.scrollAreaWidgetContents_Encoding_Params.layout())
+        my_emit(signal.lineEdit_System_Tips, 'Encoding setting is OK!')
 
     def comboBox_Select_Model(self):
         SelectModel(self.ui_Main.comboBox_Select_Model,
                     self.ui_Main.scrollAreaWidgetContents_Model_Params.layout())
+        shareInfo.menuModel.modelName = self.ui_Main.comboBox_Select_Model.currentText()
+        shareInfo.menuModel.modelParams = GetLayoutItemValue(self.ui_Main.scrollAreaWidgetContents_Model_Params.layout())
+        my_emit(signal.lineEdit_System_Tips, 'Model setting is OK!')
 
     ''' plot function'''
 
@@ -598,14 +664,15 @@ class DealAction:
             canvasCM.figure = cm.figure
             self.ui_Main.tab_Confusion_Matrix.layout().addWidget(canvasCM)
         if cr:
-            print(cr)
             for row in range(2):
                 for col, value in enumerate(cr.values()):
-                    self.ui_Main.tableWidget_Classification_Report.setItem(row, col, QTableWidgetItem(
-                        '{:.2f}%'.format(value[row] * 100)))
+                    tableItem = MyQTableWidgetItem('{:.2f}%'.format(value[row] * 100))
+                    tableItem.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                    self.ui_Main.tableWidget_Classification_Report.setItem(row, col, tableItem)
             for col, value in enumerate(cr.values()):
-                self.ui_Main.tableWidget_Classification_Report.setItem(2, col, QTableWidgetItem(
-                    '{:.2f}%'.format(sum(value) / 2 * 100)))
+                tableItem = MyQTableWidgetItem('{:.2f}%'.format(sum(value) / 2 * 100))
+                tableItem.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                self.ui_Main.tableWidget_Classification_Report.setItem(2, col, tableItem)
 
     # Message Display
     def set_textBrowser_Message(self, text):

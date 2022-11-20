@@ -86,7 +86,7 @@ class My_Main_Window(QMainWindow, DealAction):
         self.ui_Main.action_Stop.triggered.connect(super().action_Stop)
 
         # 交互区域
-        self.ui_Main.comboBox_Select_Feature.currentIndexChanged.connect(super().comboBox_Select_Feature)
+        self.ui_Main.comboBox_Select_Encoding.currentIndexChanged.connect(super().comboBox_Select_Encoding)
 
         self.ui_Main.comboBox_Select_Model.currentIndexChanged.connect(super().comboBox_Select_Model)
 

@@ -19,8 +19,8 @@ class Thread_Import_Train_File(QThread):
         fasta_data = []
         for filePath in self.listFilePath:
             my_emit(signal.lineEdit_System_Tips, 'Loading train file: ' + filePath)
-            data = LoadData(filePath, 0)
-            fasta_data += data
+            tmp_data = LoadData(filePath, 0)
+            fasta_data += tmp_data
         shareInfo.menuFile.trainFileData = fasta_data
         my_emit(signal.lineEdit_System_Tips, 'Loaded file!')
 
@@ -34,8 +34,8 @@ class Thread_Import_Test_File(QThread):
         fasta_data = []
         for filePath in self.listFilePath:
             my_emit(signal.lineEdit_System_Tips, 'Loading test file: ' + filePath)
-            data = LoadData(filePath, 1)
-            fasta_data += data
+            tmp_data = LoadData(filePath, 1)
+            fasta_data += tmp_data
         shareInfo.menuFile.testFileData = fasta_data
         my_emit(signal.lineEdit_System_Tips, 'Loaded file!')
 
@@ -49,8 +49,8 @@ class Thread_Import_Prediction_File(QThread):
         fasta_data = []
         for filePath in self.listFilePath:
             my_emit(signal.lineEdit_System_Tips, 'Loading prediction file: ' + filePath)
-            data = LoadData(filePath, 2)
-            fasta_data += data
+            tmp_data = LoadData(filePath, 2)
+            fasta_data += tmp_data
         shareInfo.menuFile.predictionFileData = fasta_data
         my_emit(signal.lineEdit_System_Tips, 'Loaded file!')
 
@@ -64,8 +64,8 @@ class Thread_Import_Preparation_File(QThread):
         fasta_data = []
         for filePath in self.listFilePath:
             my_emit(signal.lineEdit_System_Tips, 'Loading preparation file: ' + filePath)
-            data = LoadData(filePath, 3)
-            fasta_data += data
+            tmp_data = LoadData(filePath, 3)
+            fasta_data += tmp_data
         shareInfo.menuFile.preparationFileData = fasta_data
         my_emit(signal.lineEdit_System_Tips, 'Loaded file!')
 
@@ -116,6 +116,7 @@ class Thread_Duplication(QThread):
                     my_emit(signal.textBrowser_Message,
                             '\n'.join(shareInfo.menuPreparation.listResult[newResultIndex:]))
                     newResultIndex = 0
+        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(len(shareInfo.menuPreparation.listResult)))
         my_emit(signal.lineEdit_System_Tips, 'Duplication is OK!')
 
 
@@ -142,6 +143,7 @@ class Thread_Length_Clipping(QThread):
                     my_emit(signal.textBrowser_Message,
                             '\n'.join(shareInfo.menuPreparation.listResult[newResultIndex:]))
                     newResultIndex = 0
+        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(len(shareInfo.menuPreparation.listResult)))
         my_emit(signal.lineEdit_System_Tips, 'Length clipping is OK!')
 
 
@@ -177,6 +179,7 @@ class Thread_Format_File(QThread):
                     my_emit(signal.textBrowser_Message,
                             '\n'.join(shareInfo.menuPreparation.listResult[newResultIndex:]))
                     newResultIndex = 0
+        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(len(shareInfo.menuPreparation.listResult)))
         my_emit(signal.lineEdit_System_Tips, 'Format file is OK!')
 
 
@@ -212,7 +215,10 @@ class Thread_Feature_Extraction(QThread):
         encodingFunc = globals()[self.featureName]
         encoded_data = encodingFunc(listSequences, **self.dictParams)
         shareInfo.menuFeature.ndarrayResult = encoded_data
-        my_emit(signal.textBrowser_Message, str(encoded_data))
+        my_emit(signal.textBrowser_Message,
+                'Feature name: {}\n'.format(self.featureName) +
+                'Params: {}\n'.format('; '.join([k + '=' + str(v) for k, v in self.dictParams.items()]) if self.dictParams else 'None') +
+                'Encoded data\'s shape: {}'.format(encoded_data.shape))
 
 
 class Thread_Save_Feature(QThread):

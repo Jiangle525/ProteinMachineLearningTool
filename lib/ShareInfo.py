@@ -18,6 +18,8 @@ class MenuPreparation:
 
 class MenuFeature:
     def __init__(self):
+        self.featureName = 'AAC'
+        self.featureParams = {}
         self.ndarrayResult = None
 
 

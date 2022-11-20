@@ -2,51 +2,7 @@ import math
 from collections import Counter
 import numpy as np
 from gensim.models.word2vec import Word2Vec
-
-
-def AAC(sequences):
-    AA = 'ACDEFGHIKLMNPQRSTVWY'
-    allAAC = []
-    for sequence in sequences:
-        N = len(sequence)
-        count = Counter(sequence)
-        for key in count:
-            count[key] = count[key] / N
-        code = []
-        for aa in AA:
-            code.append(count[aa])
-        allAAC.append(code)
-    return np.array(allAAC)
-
-
-def CKSAAP(sequences, gap=3):
-    AA = 'ACDEFGHIKLMNPQRSTVWY'
-    encodings = []
-    aaPairs = []
-    for aa1 in AA:
-        for aa2 in AA:
-            aaPairs.append(aa1 + aa2)
-
-    for sequence in sequences:
-        code = []
-        for g in range(gap + 1):
-            myDict = {}
-            for pair in aaPairs:
-                myDict[pair] = 0
-            sumCount = 0
-            for index1 in range(len(sequence)):
-                index2 = index1 + g + 1
-                if index1 < len(sequence) and index2 < len(sequence) \
-                        and sequence[index1] in AA and sequence[index2] in AA:
-                    myDict[sequence[index1] + sequence[index2]] = myDict[sequence[index1] + sequence[index2]] + 1
-                    sumCount += 1
-            for pair in aaPairs:
-                if sumCount != 0:
-                    code.append(myDict[pair] / sumCount)
-                else:
-                    code.append(0)
-        encodings.append(code)
-    return np.array(encodings)
+from lib.MySignal import *
 
 
 def CalculateKSCTriad(sequence, gap, features, AADict):
@@ -67,6 +23,62 @@ def CalculateKSCTriad(sequence, gap, features, AADict):
             res.append((myDict[f] - minValue) / maxValue)
 
     return res
+
+
+def AAC(sequences):
+    AA = 'ACDEFGHIKLMNPQRSTVWY'
+    allAAC = []
+    sequencesLength = len(sequences)
+    one_percent = max(1, sequencesLength // 100)
+    progressIndex = 0
+    for sequence in sequences:
+        N = len(sequence)
+        count = Counter(sequence)
+        for key in count:
+            count[key] = count[key] / N
+        code = []
+        for aa in AA:
+            code.append(count[aa])
+        allAAC.append(code)
+        progressIndex += 1
+        if progressIndex % one_percent == 0 or progressIndex == sequencesLength:
+            my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
+    return np.array(allAAC)
+
+
+def CKSAAP(sequences, gap=3):
+    AA = 'ACDEFGHIKLMNPQRSTVWY'
+    encodings = []
+    aaPairs = []
+    for aa1 in AA:
+        for aa2 in AA:
+            aaPairs.append(aa1 + aa2)
+    sequencesLength = len(sequences)
+    one_percent = max(1, sequencesLength // 100)
+    progressIndex = 0
+    for sequence in sequences:
+        code = []
+        for g in range(gap + 1):
+            myDict = {}
+            for pair in aaPairs:
+                myDict[pair] = 0
+            sumCount = 0
+            for index1 in range(len(sequence)):
+                index2 = index1 + g + 1
+                if index1 < len(sequence) and index2 < len(sequence) \
+                        and sequence[index1] in AA and sequence[index2] in AA:
+                    myDict[sequence[index1] + sequence[index2]] = myDict[sequence[index1] + sequence[index2]] + 1
+                    sumCount += 1
+            for pair in aaPairs:
+                if sumCount != 0:
+                    code.append(myDict[pair] / sumCount)
+                else:
+                    code.append(0)
+        encodings.append(code)
+        progressIndex += 1
+        if progressIndex % one_percent == 0 or progressIndex == sequencesLength:
+            my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
+    return np.array(encodings)
 
 
 def CTriad(sequences, gap=0):
@@ -90,13 +102,18 @@ def CTriad(sequences, gap=0):
     features = [f1 + '.' + f2 + '.' + f3 for f1 in myGroups for f2 in myGroups for f3 in myGroups]
 
     encodings = []
-
+    sequencesLength = len(sequences)
+    one_percent = max(1, sequencesLength // 100)
+    progressIndex = 0
     for sequence in sequences:
         # if len(sequence) < 3:
         #     print('Error: for "CTriad" encoding, the input fasta sequences should be greater than 3. \n\n')
         #     return 0
         code = CalculateKSCTriad(sequence, 0, features, AADict)
         encodings.append(code)
+        progressIndex += 1
+        if progressIndex % one_percent == 0 or progressIndex == sequencesLength:
+            my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
 
     return np.array(encodings)
 
@@ -134,7 +151,9 @@ def DDE(sequences):
     for pair in diPeptides:
         T_m.append((codons_table[pair[0]] / C_N)
                    * (codons_table[pair[1]] / C_N))
-
+    sequencesLength = len(sequences)
+    one_percent = max(1, sequencesLength // 100)
+    progressIndex = 0
     for sequence in sequences:
         N = len(sequence) - 1
         D_c = []
@@ -154,6 +173,9 @@ def DDE(sequences):
             DDE_p.append((D_c[i] - T_m[i]) / math.sqrt(T_v[i]))
 
         all_DDE_p.append(DDE_p)
+        progressIndex += 1
+        if progressIndex % one_percent == 0 or progressIndex == sequencesLength:
+            my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
 
     return np.array(all_DDE_p)
 
@@ -179,13 +201,18 @@ def KSCTriad(sequences, gap=0, **kw):
     features = [f1 + '.' + f2 + '.' + f3 for f1 in myGroups for f2 in myGroups for f3 in myGroups]
 
     encodings = []
-
+    sequencesLength = len(sequences)
+    one_percent = max(1, sequencesLength // 100)
+    progressIndex = 0
     for sequence in sequences:
         if len(sequence) < 2 * gap + 3:
             print('Error: for "KSCTriad" encoding, the input fasta sequences should be greater than (2*gap+3). \n\n')
             return 0
         code = CalculateKSCTriad(sequence, gap, features, AADict)
         encodings.append(code)
+        progressIndex += 1
+        if progressIndex % one_percent == 0 or progressIndex == sequencesLength:
+            my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
 
     return np.array(encodings)
 
@@ -198,7 +225,9 @@ def TPC(sequences):
     AADict = {}
     for i in range(len(AA)):
         AADict[AA[i]] = i
-
+    sequencesLength = len(sequences)
+    one_percent = max(1, sequencesLength // 100)
+    progressIndex = 0
     for sequence in sequences:
         tmpCode = [0] * 8000
         for j in range(len(sequence) - 3 + 1):
@@ -207,6 +236,9 @@ def TPC(sequences):
         if sum(tmpCode) != 0:
             tmpCode = [i / sum(tmpCode) for i in tmpCode]
         encodings.append(tmpCode)
+        progressIndex += 1
+        if progressIndex % one_percent == 0 or progressIndex == sequencesLength:
+            my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
     return np.array(encodings)
 
 
@@ -229,10 +261,16 @@ def Word2Vector(sequences, k_mer=3, vector_size=50):
     model.init_sims(replace=True)
 
     encodingsVec = []
+    sequencesLength = len(sequences)
+    one_percent = max(1, sequencesLength // 100)
+    progressIndex = 0
     for cutSentence in cutSequences:
         seqVec = [model.wv[word] for word in cutSentence]
         len_seq_vec = len(seqVec)
         seqVec.extend([np.zeros(vector_size)] * (sequenceMaxLength - len_seq_vec))
         encodingsVec.append(seqVec)
+        progressIndex += 1
+        if progressIndex % one_percent == 0 or progressIndex == sequencesLength:
+            my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
     encodings = np.array(encodingsVec, dtype=np.float32)
-    return encodings.reshape(len(encodings),-1)
+    return encodings.reshape(len(encodings), -1)
