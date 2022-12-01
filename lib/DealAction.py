@@ -307,7 +307,7 @@ class DealAction:
         file_name_tuple = QFileDialog().getOpenFileName(parent=self.ui_Main,
                                                         caption='Select Model File',
                                                         directory='./',
-                                                        filter="Model file (*.model);;H5 file (*.h5);;Pickle file (*.pickle)")
+                                                        filter="Pickle file (*.pickle);;H5 file (*.h5);;All files (*)")
         if not file_name_tuple[0]:
             my_emit(signal.lineEdit_System_Tips, 'Select model file is canceled! No file selected!')
             return
@@ -458,8 +458,10 @@ class DealAction:
     def ui_Feature_Extraction_buttonBoxAccepted(self):
         self.action_Clear_Output()
         shareInfo.menuFeature.featureName = self.ui_Feature_Extraction.comboBox_Select_Feature.currentText()
-        shareInfo.menuFeature.featureParams = GetLayoutItemValue(self.ui_Feature_Extraction.scrollAreaWidgetContents_Feature_Params.layout())
-        self.thread_Feature_Extraction = Thread_Feature_Extraction(shareInfo.menuFeature.featureName, shareInfo.menuFeature.featureParams)
+        shareInfo.menuFeature.featureParams = GetLayoutItemValue(
+            self.ui_Feature_Extraction.scrollAreaWidgetContents_Feature_Params.layout())
+        self.thread_Feature_Extraction = Thread_Feature_Extraction(shareInfo.menuFeature.featureName,
+                                                                   shareInfo.menuFeature.featureParams)
         self.thread_Feature_Extraction.start()
 
     def ui_Feature_Extraction_buttonBoxRejected(self):
@@ -549,7 +551,16 @@ class DealAction:
         my_emit(signal.lineEdit_System_Tips, 'Cross Validation setting is canceled!')
 
     def action_Save_Model(self):
-        self.ui_Main.textBrowser_Message.setText('action_Save_Model')
+        if not self.CheckExistence(shareInfo.menuModel.trainedModel, 'Model isn\'t exist!'):
+            return
+        my_emit(signal.lineEdit_System_Tips, 'Selecting model save file.')
+        fileNameTuple = QFileDialog().getSaveFileName(self.ui_Main, 'Save model', './',
+                                                      "Pickle files (*.pickle);;H5 files (*.h5);;All files (*)")
+        if not fileNameTuple[0]:
+            my_emit(signal.lineEdit_System_Tips, 'No save path selected!')
+            return
+        self.thread_Save_Model = Thread_Save_Model(fileNameTuple[0])
+        self.thread_Save_Model.start()
 
     def action_Save_All_Metrics(self):
         self.ui_Main.textBrowser_Message.setText('action_Save_All_Metrics')
@@ -571,10 +582,24 @@ class DealAction:
 
     # Prediction
     def action_Start_Prediction(self):
-        self.ui_Main.textBrowser_Message.setText('action_Start_Prediction')
+        if not self.CheckExistence(shareInfo.menuFile.model, 'Model file isn\'t imported!'):
+            return
+        if not self.CheckExistence(shareInfo.menuFile.predictionFileData, 'Prediction file isn\'t imported!'):
+            return
+        self.thread_Start_Prediction = Thread_Start_Prediction()
+        self.thread_Start_Prediction.start()
 
     def action_Save_Prediction_Result(self):
-        self.ui_Main.textBrowser_Message.setText('action_Save_Prediction_Result')
+        if not self.CheckExistence(shareInfo.menuPrediction.listPredictionResult, 'Result isn\'t exist!'):
+            return
+        my_emit(signal.lineEdit_System_Tips, 'Selecting prediction result save file.')
+        fileNameTuple = QFileDialog().getSaveFileName(self.ui_Main, 'Save prediction result file', './',
+                                                      "Csv files (*.csv);;Text files (*.txt);;All files (*)")
+        if not fileNameTuple[0]:
+            my_emit(signal.lineEdit_System_Tips, 'No save path selected!')
+            return
+        self.thread_Save_Prediction = Thread_Save_Prediction(fileNameTuple[0])
+        self.thread_Save_Prediction.start()
 
     # Visualization
     def action_Dimension_Reduction(self):
@@ -609,14 +634,16 @@ class DealAction:
         SelectFeature(self.ui_Main.comboBox_Select_Encoding,
                       self.ui_Main.scrollAreaWidgetContents_Encoding_Params.layout())
         shareInfo.menuModel.encodingName = self.ui_Main.comboBox_Select_Encoding.currentText()
-        shareInfo.menuModel.encodingParams = GetLayoutItemValue(self.ui_Main.scrollAreaWidgetContents_Encoding_Params.layout())
+        shareInfo.menuModel.encodingParams = GetLayoutItemValue(
+            self.ui_Main.scrollAreaWidgetContents_Encoding_Params.layout())
         my_emit(signal.lineEdit_System_Tips, 'Encoding setting is OK!')
 
     def comboBox_Select_Model(self):
         SelectModel(self.ui_Main.comboBox_Select_Model,
                     self.ui_Main.scrollAreaWidgetContents_Model_Params.layout())
         shareInfo.menuModel.modelName = self.ui_Main.comboBox_Select_Model.currentText()
-        shareInfo.menuModel.modelParams = GetLayoutItemValue(self.ui_Main.scrollAreaWidgetContents_Model_Params.layout())
+        shareInfo.menuModel.modelParams = GetLayoutItemValue(
+            self.ui_Main.scrollAreaWidgetContents_Model_Params.layout())
         my_emit(signal.lineEdit_System_Tips, 'Model setting is OK!')
 
     ''' plot function'''

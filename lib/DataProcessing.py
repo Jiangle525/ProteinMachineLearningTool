@@ -6,6 +6,7 @@ from sklearn.model_selection import KFold
 from lib.MySignal import *
 from lib.FeatureExtraction import *
 from lib.ModelDefinition import *
+from lib.ShareInfo import shareInfo
 from lib.Visualization import *
 
 
@@ -99,8 +100,18 @@ def StartTrain(trainFileData, testFileData, encodingName, encodingParams, modelN
 
     classifier_func = globals()[modelName]
     model = classifier_func(**modelParams)
-    bestModel, fprs, tprs = k_fold_cross_validation(model, X_train, y_train, k=validation)
-    cm, cr = GetMetrics(bestModel, X_test, y_test)
-    canvasROC = draw_roc(fprs, tprs)
-    canvasCM = draw_confusion_matrix(cm)
-    my_emit(signal.tabWidget_Metrics_ROCCurve_ConfusionMatrix_ClassificationReport, *[canvasROC, canvasCM, cr])
+    shareInfo.menuModel.trainedModel, fprs, tprs = k_fold_cross_validation(model, X_train, y_train, k=validation)
+    cm, cr = GetMetrics(shareInfo.menuModel.trainedModel, X_test, y_test)
+    shareInfo.menuModel.canvasROC = draw_roc(fprs, tprs)
+    shareInfo.menuModel.canvasConfusionMatrix = draw_confusion_matrix(cm)
+    shareInfo.menuModel.classificationReport = cr
+
+    my_emit(signal.tabWidget_Metrics_ROCCurve_ConfusionMatrix_ClassificationReport,
+            *[shareInfo.menuModel.canvasROC, shareInfo.menuModel.canvasConfusionMatrix, cr])
+
+
+def StartPrediction(predictionFileData, model, encodingName, encodingParams):
+    predictionSequences = [i[1] for i in predictionFileData]
+    encodingFunc = globals()[encodingName]
+    X_prediction = encodingFunc(predictionSequences, **encodingParams)
+    shareInfo.menuPrediction.listPredictionResult = model.predict(X_prediction)

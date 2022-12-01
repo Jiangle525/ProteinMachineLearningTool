@@ -1,84 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2fc5130-1b10-4cd5-9f37-5de6d0be3ab4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../工具初版/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../工具初版/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../工具初版/ui/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../工具初版/ui/MainWindow.ui" afterDir="false" />
+    <list default="true" id="c6a3de5c-3fe5-4826-ab37-bb30b1c3c601" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/工具初版.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/lib/DataProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/DataProcessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/lib/MyThreads.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/MyThreads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/lib/ShareInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/ShareInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/w2v.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Jupyter Notebook" />
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
-    <envs>
-      <env key="FLASK_APP" value="app" />
-    </envs>
-    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
-    <option name="myEnvs">
-      <map>
-        <entry key="FLASK_APP" value="app" />
-      </map>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../工具初版" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../MyTool" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/PyCharm2022.2/python_stubs/-1585009584/PySide2/QtCore/Signal.py" root0="SKIP_INSPECTION" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2HFokqSehBLryXVBFIxQZvzxcpa" />
+  <component name="ProjectId" id="2IJ0YKQSalvpPtHS4Pgr4twBCIm" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../工具初版/lib" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Jiangle\Desktop\毕设\05-代码\工具初版\lib" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Jiangle\Desktop\毕设\05-代码\工具初版\lib" />
-    </key>
   </component>
   <component name="RunManager" selected="Python.main">
-    <configuration name="DealAction" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="工具初版" />
+    <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="MyTool" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../工具初版/lib" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="C:\ProgramData\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../工具初版/lib/DealAction.py" />
+      <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -88,41 +59,19 @@
       <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="工具初版" />
+      <module name="MyTool" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../工具初版" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../MyTool" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../工具初版/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="工具初版" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../工具初版" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../工具初版/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../MyTool/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -132,61 +81,31 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.test" />
-      <item itemvalue="Python.DealAction" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.DealAction" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c2fc5130-1b10-4cd5-9f37-5de6d0be3ab4" name="Changes" comment="" />
-      <created>1667890341286</created>
+      <changelist id="c6a3de5c-3fe5-4826-ab37-bb30b1c3c601" name="Changes" comment="" />
+      <created>1669884425095</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1667890341286</updated>
-      <workItem from="1667890358435" duration="6066000" />
-      <workItem from="1667896883648" duration="31938000" />
-      <workItem from="1668012152900" duration="49789000" />
-      <workItem from="1668225031097" duration="37000" />
-      <workItem from="1668225086480" duration="48000" />
-      <workItem from="1668225153964" duration="25000" />
-      <workItem from="1668225247484" duration="176000" />
-      <workItem from="1668225441237" duration="27381000" />
-      <workItem from="1668272882759" duration="13059000" />
-      <workItem from="1668589386826" duration="27031000" />
-      <workItem from="1668749152683" duration="9854000" />
-      <workItem from="1668759413826" duration="14898000" />
-      <workItem from="1668911309923" duration="735000" />
-      <workItem from="1668927896797" duration="101000" />
-      <workItem from="1668928215410" duration="10168000" />
+      <updated>1669884425095</updated>
+      <workItem from="1669884426594" duration="778000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/_$DealAction.coverage" NAME="DealAction Coverage Results" MODIFIED="1668762795912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../工具初版/lib" />
-    <SUITE FILE_PATH="coverage/_$test.coverage" NAME="test Coverage Results" MODIFIED="1668777568709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../工具初版" />
-    <SUITE FILE_PATH="coverage/_$main.coverage" NAME="main Coverage Results" MODIFIED="1668939115018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../工具初版" />
+    <SUITE FILE_PATH="coverage/MyTool_$main.coverage" NAME="main Coverage Results" MODIFIED="1669885044208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
   </component>
 </project>

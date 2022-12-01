@@ -32,8 +32,9 @@ class MenuModel:
         self.validation = 5
 
         self.trainedModel = None
-        self.kFoldValidationROCFig = None
-        self.dictMetrics = None
+        self.canvasROC = None
+        self.canvasConfusionMatrix = None
+        self.classificationReport = None
 
 
 class MenuPrediction:
@@ -53,6 +54,7 @@ class ShareInfo:
         self.menuPreparation = MenuPreparation()
         self.menuFeature = MenuFeature()
         self.menuModel = MenuModel()
+        self.menuPrediction = MenuPrediction()
 
     def DefaultMenuFile(self):
         self.menuFile = MenuFile()

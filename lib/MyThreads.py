@@ -1,4 +1,7 @@
 import os
+import pickle
+
+import pandas as pd
 from PyQt5.QtCore import QThread
 from lib.DataProcessing import *
 from lib.ShareInfo import *
@@ -76,8 +79,12 @@ class Thread_Import_Model(QThread):
         self.modelPath = modelPath
 
     def run(self):
-        my_emit(signal.textBrowser_Message, 'Import model isn\'t implemented')
-        my_emit(signal.lineEdit_System_Tips, 'Import model isn\'t implemented')
+        my_emit(signal.lineEdit_System_Tips, 'Loading model.')
+        my_emit(signal.progressBar, 0)
+        with open(self.modelPath, 'rb') as f:
+            shareInfo.menuFile.model = pickle.load(f)
+        my_emit(signal.progressBar, 100)
+        my_emit(signal.lineEdit_System_Tips, 'Model file has loaded!')
 
 
 class Thread_Import_Feature(QThread):
@@ -116,7 +123,8 @@ class Thread_Duplication(QThread):
                     my_emit(signal.textBrowser_Message,
                             '\n'.join(shareInfo.menuPreparation.listResult[newResultIndex:]))
                     newResultIndex = 0
-        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(len(shareInfo.menuPreparation.listResult)))
+        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(
+            len(shareInfo.menuPreparation.listResult)))
         my_emit(signal.lineEdit_System_Tips, 'Duplication is OK!')
 
 
@@ -143,7 +151,8 @@ class Thread_Length_Clipping(QThread):
                     my_emit(signal.textBrowser_Message,
                             '\n'.join(shareInfo.menuPreparation.listResult[newResultIndex:]))
                     newResultIndex = 0
-        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(len(shareInfo.menuPreparation.listResult)))
+        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(
+            len(shareInfo.menuPreparation.listResult)))
         my_emit(signal.lineEdit_System_Tips, 'Length clipping is OK!')
 
 
@@ -179,7 +188,8 @@ class Thread_Format_File(QThread):
                     my_emit(signal.textBrowser_Message,
                             '\n'.join(shareInfo.menuPreparation.listResult[newResultIndex:]))
                     newResultIndex = 0
-        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(len(shareInfo.menuPreparation.listResult)))
+        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(
+            len(shareInfo.menuPreparation.listResult)))
         my_emit(signal.lineEdit_System_Tips, 'Format file is OK!')
 
 
@@ -217,7 +227,8 @@ class Thread_Feature_Extraction(QThread):
         shareInfo.menuFeature.ndarrayResult = encoded_data
         my_emit(signal.textBrowser_Message,
                 'Feature name: {}\n'.format(self.featureName) +
-                'Params: {}\n'.format('; '.join([k + '=' + str(v) for k, v in self.dictParams.items()]) if self.dictParams else 'None') +
+                'Params: {}\n'.format(
+                    '; '.join([k + '=' + str(v) for k, v in self.dictParams.items()]) if self.dictParams else 'None') +
                 'Encoded data\'s shape: {}'.format(encoded_data.shape))
 
 
@@ -250,6 +261,52 @@ class Thread_Start_Training(QThread):
         StartTrain(shareInfo.menuFile.trainFileData, shareInfo.menuFile.testFileData,
                    shareInfo.menuModel.encodingName, shareInfo.menuModel.encodingParams, shareInfo.menuModel.modelName,
                    shareInfo.menuModel.modelParams, shareInfo.menuModel.validation)
+
+
+class Thread_Save_Model(QThread):
+    def __init__(self, fileName):
+        super(Thread_Save_Model, self).__init__()
+        self.fileName = fileName
+
+    def run(self):
+        my_emit(signal.lineEdit_System_Tips, 'Saving model.')
+        if os.path.exists(self.fileName):
+            os.remove(self.fileName)
+        my_emit(signal.progressBar, 0)
+        with open(self.fileName, 'wb') as f:
+            pickle.dump(shareInfo.menuModel.trainedModel, f)
+        my_emit(signal.progressBar, 100)
+        my_emit(signal.lineEdit_System_Tips, 'Model file has saved!')
+
+
+class Thread_Start_Prediction(QThread):
+    def __init__(self):
+        super(Thread_Start_Prediction, self).__init__()
+
+    def run(self):
+        my_emit(signal.lineEdit_System_Tips, 'Start prediction...')
+        StartPrediction(shareInfo.menuFile.predictionFileData, shareInfo.menuFile.model,
+                        shareInfo.menuModel.encodingName, shareInfo.menuModel.encodingParams)
+        my_emit(signal.lineEdit_System_Tips, 'Prediction has finished.')
+
+
+class Thread_Save_Prediction(QThread):
+    def __init__(self, fileName):
+        super(Thread_Save_Prediction, self).__init__()
+        self.fileName = fileName
+
+    def run(self):
+        my_emit(signal.lineEdit_System_Tips, 'Saving prediction result.')
+        if os.path.exists(self.fileName):
+            os.remove(self.fileName)
+        my_emit(signal.progressBar, 0)
+
+        dictResult = dict(zip(['\n'.join(i) for i in shareInfo.menuFile.predictionFileData],
+                              [str(i) for i in shareInfo.menuPrediction.listPredictionResult]))
+        dataframe = pd.DataFrame({'Sequence': dictResult.keys(), 'Prediction': dictResult.values()})
+        dataframe.to_csv(self.fileName, index=False, sep=',')
+        my_emit(signal.progressBar, 100)
+        my_emit(signal.lineEdit_System_Tips, 'Prediciton result file has saved!')
 
 
 class Thread_Clear_Output(QThread):
