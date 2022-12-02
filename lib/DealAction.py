@@ -398,6 +398,7 @@ class DealAction:
         self.action_Clear_Output()
         minimumLength = self.ui_Length_Clipping.spinBox_Minimum_Length.text()
         maximumLength = self.ui_Length_Clipping.spinBox_Maximum_Length.text()
+        self.ui_Length_Clipping.close()
         self.thread_Length_Clipping = Thread_Length_Clipping(int(minimumLength), int(maximumLength))
         self.thread_Length_Clipping.start()
 
@@ -407,7 +408,7 @@ class DealAction:
 
     def ui_CD_HIT_buttonBoxAccepted(self):
         self.action_Clear_Output()
-
+        self.ui_CD_HIT.close()
         self.thread_CD_HIT = Thread_CD_HIT()
         self.thread_CD_HIT.start()
 
@@ -419,6 +420,7 @@ class DealAction:
         self.action_Clear_Output()
         label = self.ui_Format_File.spinBox_Label.text()
         dataType = self.ui_Format_File.comboBox_Type.currentText()
+        self.ui_Format_File.close()
         self.thread_Format_File = Thread_Format_File(label, dataType)
         self.thread_Format_File.start()
 
@@ -460,6 +462,7 @@ class DealAction:
         shareInfo.menuFeature.featureName = self.ui_Feature_Extraction.comboBox_Select_Feature.currentText()
         shareInfo.menuFeature.featureParams = GetLayoutItemValue(
             self.ui_Feature_Extraction.scrollAreaWidgetContents_Feature_Params.layout())
+        self.ui_Feature_Extraction.close()
         self.thread_Feature_Extraction = Thread_Feature_Extraction(shareInfo.menuFeature.featureName,
                                                                    shareInfo.menuFeature.featureParams)
         self.thread_Feature_Extraction.start()
@@ -478,6 +481,17 @@ class DealAction:
             return
         if not self.CheckExistence(shareInfo.menuModel.modelName, 'Model isn\'t selected!'):
             return
+        self.action_Clear_Output()
+        my_emit(signal.textBrowser_Message,
+                '====Start training====\n'
+                'Encoding method: {},\n'
+                'Encoding params: {},\n'
+                'Model name: {},\n'
+                'Model params: {},\n'
+                'Validation: {} fold.\n'
+                .format(shareInfo.menuModel.encodingName, shareInfo.menuModel.encodingParams,
+                        shareInfo.menuModel.modelName, shareInfo.menuModel.modelParams,
+                        shareInfo.menuModel.validation))
         self.thread_Start_Training = Thread_Start_Training()
         self.thread_Start_Training.start()
 
@@ -499,9 +513,8 @@ class DealAction:
         shareInfo.menuModel.encodingName = self.ui_EncodingMethod.comboBox_Select_Encoding.currentText()
         shareInfo.menuModel.encodingParams = GetLayoutItemValue(
             self.ui_EncodingMethod.scrollAreaWidgetContents_Encoding_Params.layout())
+        self.ui_EncodingMethod.close()
         my_emit(signal.lineEdit_System_Tips, 'Encoding setting is OK!')
-        # my_emit(signal.textBrowser_Message, 'Encoding Name:' + str(shareInfo.menuModel.encodingName) + '\n' + '\n'.join(
-        #     [k + v for k, v in shareInfo.menuModel.encodingParams.items()]))
 
     def ui_EncodingMethod_buttonBoxRejected(self):
         self.ui_EncodingMethod.close()
@@ -525,9 +538,8 @@ class DealAction:
         shareInfo.menuModel.modelName = self.ui_SelectModel.comboBox_Select_Model.currentText()
         shareInfo.menuModel.modelParams = GetLayoutItemValue(
             self.ui_SelectModel.scrollAreaWidgetContents_Model_Params.layout())
+        self.ui_SelectModel.close()
         my_emit(signal.lineEdit_System_Tips, 'Model setting is OK!')
-        # my_emit(signal.textBrowser_Message, 'Model Name:' + str(shareInfo.menuModel.modelName) + '\n' + '\n'.join(
-        #     [k + v for k, v in shareInfo.menuModel.modelParams.items()]))
 
     def ui_SelectModel_buttonBoxRejected(self):
         self.ui_SelectModel.close()
@@ -543,8 +555,8 @@ class DealAction:
 
     def ui_Validation_buttonBoxAccepted(self):
         shareInfo.menuModel.validation = int(self.ui_Validation.spinBox.text())
+        self.ui_Validation.close()
         my_emit(signal.lineEdit_System_Tips, 'Cross Validation setting is OK!')
-        my_emit(signal.textBrowser_Message, 'Cross Validation: {}'.format(shareInfo.menuModel.validation))
 
     def ui_Validation_buttonBoxRejected(self):
         self.ui_Validation.close()

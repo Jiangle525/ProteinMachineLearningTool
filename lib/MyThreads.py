@@ -3,6 +3,8 @@ import pickle
 
 import pandas as pd
 from PyQt5.QtCore import QThread
+from sklearn.manifold import TSNE
+
 from lib.DataProcessing import *
 from lib.ShareInfo import *
 from lib.MySignal import *
@@ -315,6 +317,7 @@ class Thread_Clear_Output(QThread):
 
     def run(self):
         pass
+
 
 
 class Thread_Clear_Output(QThread):

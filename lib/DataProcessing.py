@@ -39,6 +39,7 @@ def LoadData(fileName, fileIndex=0):
 def GetSequencesLabels(data):
     labels, sequences = [], []
     for item in data:
+        '''需要处理data名字没有格式化！！！！！！！！！'''
         label = int(item[0].split('|')[1])
         sequence = item[1]
         labels.append(label)
@@ -53,6 +54,7 @@ def k_fold_cross_validation(base_model, X, y, k=10):
     i = 1
     kf = KFold(n_splits=k, shuffle=False)  # 初始化KFold
     for train_index, test_index in kf.split(X):
+        my_emit(signal.lineEdit_System_Tips, '{} fold is training...'.format(i))
         my_emit(signal.progressBar, 100 * i // k)
         model = copy.deepcopy(base_model)
         x_train, y_train = X[train_index], y[train_index]
@@ -95,8 +97,13 @@ def StartTrain(trainFileData, testFileData, encodingName, encodingParams, modelN
     test_sequences, test_labels = GetSequencesLabels(testFileData)
 
     encodingFunc = globals()[encodingName]
-    X_train, X_test = encodingFunc(train_sequences, **encodingParams), encodingFunc(test_sequences, **encodingParams)
-    y_train, y_test = np.array(train_labels), np.array(test_labels)
+    my_emit(signal.lineEdit_System_Tips, 'Encoding train set...')
+    X_train = encodingFunc(train_sequences, **encodingParams)
+    y_train = np.array(train_labels)
+
+    my_emit(signal.lineEdit_System_Tips, 'Encoding test set...')
+    X_test = encodingFunc(test_sequences, **encodingParams)
+    y_test = np.array(test_labels)
 
     classifier_func = globals()[modelName]
     model = classifier_func(**modelParams)
