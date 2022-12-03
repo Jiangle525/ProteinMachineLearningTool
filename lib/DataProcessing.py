@@ -40,7 +40,7 @@ def GetSequencesLabels(data):
     labels, sequences = [], []
     for item in data:
         '''需要处理data名字没有格式化！！！！！！！！！'''
-        label = int(item[0].split('|')[1])
+        label = int(item[0].split('|')[-2])
         sequence = item[1]
         labels.append(label)
         sequences.append(sequence)
@@ -55,7 +55,6 @@ def k_fold_cross_validation(base_model, X, y, k=10):
     kf = KFold(n_splits=k, shuffle=False)  # 初始化KFold
     for train_index, test_index in kf.split(X):
         my_emit(signal.lineEdit_System_Tips, '{} fold is training...'.format(i))
-        my_emit(signal.progressBar, 100 * i // k)
         model = copy.deepcopy(base_model)
         x_train, y_train = X[train_index], y[train_index]
         x_test, y_test = X[test_index], y[test_index]
@@ -67,6 +66,7 @@ def k_fold_cross_validation(base_model, X, y, k=10):
             best_model = model
         fprs.append(fpr)
         tprs.append(tpr)
+        my_emit(signal.progressBar, 100 * i // k)
         i += 1
     my_emit(signal.lineEdit_System_Tips, "{} fold training completed!".format(k))
     return best_model, fprs, tprs
@@ -78,7 +78,7 @@ def GetMetrics(model, X, y):
     cm = confusion_matrix(y, y_pred)
     y_pred_prob = model.predict_proba(X)[:, 1]
     TN, FP, FN, TP = cm[0][0], cm[0][1], cm[1][0], cm[1][1]
-    cr['Accuracy'] = (TP + TN) / (TN + FP + FN + TP), (TP + TN) / (TN + FP + FN + TP)
+    cr['Accuracy'] = (TN + TP) / (TN + FP + FN + TP), (TN + TP) / (TN + FP + FN + TP)
     cr['Precision'] = TN / (FN + TN), TP / (FP + TP)
     cr['Recall'] = TN / (TN + FP), TP / (TP + FN)
     cr['F1'] = 2 * cr['Precision'][0] * cr['Recall'][0] / (cr['Precision'][0] + cr['Recall'][0]), \

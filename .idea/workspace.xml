@@ -2,15 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6a3de5c-3fe5-4826-ab37-bb30b1c3c601" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../MyTool/合并文件并打乱顺序.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/1test_set.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/1train_set.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/aac_features.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/lib/DataProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/DataProcessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/lib/MyThreads.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/MyThreads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/lib/Visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/Visualization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/lr.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/rf.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/test_set.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/train.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/train_AMPs.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/train_nonAMPs.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/train_set.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/w2v.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../MyTool" />
@@ -34,6 +53,28 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="合并文件并打乱顺序" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MyTool" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../MyTool" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../MyTool/合并文件并打乱顺序.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="MyTool" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -81,10 +122,12 @@
     <list>
       <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.合并文件并打乱顺序" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.合并文件并打乱顺序" />
       </list>
     </recent_temporary>
   </component>
@@ -99,13 +142,26 @@
       <workItem from="1669884426594" duration="778000" />
       <workItem from="1669946475459" duration="553000" />
       <workItem from="1669947061766" duration="3251000" />
+      <workItem from="1670048258499" duration="4780000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MyTool_$main.coverage" NAME="main Coverage Results" MODIFIED="1669948944205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
+    <SUITE FILE_PATH="coverage/MyTool_$.coverage" NAME="合并文件并打乱顺序 Coverage Results" MODIFIED="1670049260495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
+    <SUITE FILE_PATH="coverage/MyTool_$main.coverage" NAME="main Coverage Results" MODIFIED="1670053637567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
   </component>
 </project>

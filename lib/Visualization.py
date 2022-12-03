@@ -98,7 +98,7 @@ def draw_roc(fprs, tprs):
     return canvasROC
 
 
-def draw_confusion_matrix(cm, labels=('pos', 'neg'), percentage=False, cmap=plt.cm.Blues):
+def draw_confusion_matrix(cm, labels=('neg', 'pos'), percentage=False, cmap=plt.cm.Blues):
     """_summary_
 
     Args:
