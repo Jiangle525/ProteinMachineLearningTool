@@ -464,7 +464,7 @@ font-weight: bold;
 }</string>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="tab_ROC_Curve">
              <attribute name="title">
@@ -1191,6 +1191,8 @@ p, li { white-space: pre-wrap; }
     <addaction name="separator"/>
     <addaction name="action_Format_File"/>
     <addaction name="separator"/>
+    <addaction name="action_Shuffle_File"/>
+    <addaction name="separator"/>
     <addaction name="action_Save_Preparation"/>
    </widget>
    <widget class="QMenu" name="menu_Prediction">
@@ -1684,6 +1686,11 @@ p, li { white-space: pre-wrap; }
   <action name="action_Dimension_Reduction">
    <property name="text">
     <string>Dimension Reduction</string>
+   </property>
+  </action>
+  <action name="action_Shuffle_File">
+   <property name="text">
+    <string>Shuffle File</string>
    </property>
   </action>
  </widget>

@@ -30,7 +30,7 @@ def shuffle_data_set(X, y):
 
 
 train_pos = LoadData('./data/train_pos.fasta')
-train_neg = LoadData('./data/train_net.fasta')
+train_neg = LoadData('./data/train_neg.fasta')
 test_pos = LoadData('./data/test_pos.fasta')
 test_neg = LoadData('./data/test_neg.fasta')
 

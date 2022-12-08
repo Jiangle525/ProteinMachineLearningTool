@@ -1,5 +1,6 @@
 import os
 import pickle
+import random
 
 import pandas as pd
 from PyQt5.QtCore import QThread
@@ -195,6 +196,33 @@ class Thread_Format_File(QThread):
         my_emit(signal.lineEdit_System_Tips, 'Format file is OK!')
 
 
+class Thread_Shuffle_File(QThread):
+    def __init__(self):
+        super(Thread_Shuffle_File, self).__init__()
+
+    def run(self):
+        my_emit(signal.lineEdit_System_Tips, 'Shuffle preparation file.')
+        shareInfo.menuPreparation.listResult = []
+        preparationLength = len(shareInfo.menuFile.preparationFileData)
+        one_percent = max(1, preparationLength // 100)
+        preparationIndex, newResultIndex = 0, 0
+        randomIndex = list(range(preparationLength))
+        np.random.shuffle(randomIndex)
+        for i in randomIndex:
+            shareInfo.menuPreparation.listResult.append('\n'.join(shareInfo.menuFile.preparationFileData[i]))
+            newResultIndex -= 1
+            preparationIndex += 1
+            if preparationIndex % one_percent == 0 or preparationIndex == preparationLength:
+                my_emit(signal.progressBar, 100 * preparationIndex / preparationLength)
+                if newResultIndex < 0:
+                    my_emit(signal.textBrowser_Message,
+                            '\n'.join(shareInfo.menuPreparation.listResult[newResultIndex:]))
+                    newResultIndex = 0
+        my_emit(signal.textBrowser_Message, '\n' + '=' * 10 + '\nAfter processing, left data number is: {}'.format(
+            len(shareInfo.menuPreparation.listResult)))
+        my_emit(signal.lineEdit_System_Tips, 'Shuffle file is OK!')
+
+
 class Thread_Save_Preparation(QThread):
     def __init__(self, fileName):
         super(Thread_Save_Preparation, self).__init__()
@@ -317,7 +345,6 @@ class Thread_Clear_Output(QThread):
 
     def run(self):
         pass
-
 
 
 class Thread_Clear_Output(QThread):

@@ -238,6 +238,7 @@ class DealAction:
         self.thread_Import_Feature = None
         self.thread_Duplication = None
         self.thread_Length_Clipping = None
+        self.thread_Shuffle_File = None
         self.thread_Save_Preparation = None
         self.thread_Format_File = None
         self.thread_CD_HIT = None
@@ -379,6 +380,12 @@ class DealAction:
         self.ui_Format_File.buttonBox.rejected.connect(self.ui_Format_File_buttonBoxRejected)
         self.ui_Format_File.show()
         my_emit(signal.lineEdit_System_Tips, 'Format setting.')
+
+    def action_Shuffle_File(self):
+        if not self.CheckExistence(shareInfo.menuFile.preparationFileData, 'Preparation file isn\'t imported!'):
+            return
+        self.thread_Shuffle_File = Thread_Shuffle_File()
+        self.thread_Shuffle_File.start()
 
     def action_Save_Preparation(self):
         if not self.CheckExistence(shareInfo.menuPreparation.listResult, 'Preparation result isn\'t exist!'):

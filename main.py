@@ -41,6 +41,8 @@ class My_Main_Window(QMainWindow, DealAction):
 
         self.ui_Main.action_Format_File.triggered.connect(super().action_Format_File)
 
+        self.ui_Main.action_Shuffle_File.triggered.connect(super().action_Shuffle_File)
+
         self.ui_Main.action_Save_Preparation.triggered.connect(super().action_Save_Preparation)
 
         # Feature
