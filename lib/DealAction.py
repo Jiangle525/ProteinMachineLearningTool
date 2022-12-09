@@ -337,6 +337,9 @@ class DealAction:
 
     def action_Clear_Output(self):
         self.ui_Main.textBrowser_Message.setText('')
+        DeleteLayoutItem(self.ui_Main.tab_ROC_Curve.layout())
+        DeleteLayoutItem(self.ui_Main.tab_Confusion_Matrix.layout())
+        self.ui_Main.tableWidget_Classification_Report.clearContents()
         my_emit(signal.lineEdit_System_Tips, 'Cleared message display!')
 
     def action_Exit(self):

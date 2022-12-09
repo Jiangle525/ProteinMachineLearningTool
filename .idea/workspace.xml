@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4935d8b-0721-4cf8-a48b-259b199db439" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/MyTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/MyTool.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/data/test.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/test.fasta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/data/test_neg.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/test_neg.fasta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/data/test_pos.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/test_pos.fasta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/data/train.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/train.fasta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/data/train_net.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/data/train_neg.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/train_neg.fasta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/data/train_pos.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/train_pos.fasta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/lib/MyThreads.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/MyThreads.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/ui/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/ui/MainWindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/合并文件并打乱顺序.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/合并文件并打乱顺序.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +104,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670493291134</updated>
-      <workItem from="1670493293480" duration="483000" />
+      <workItem from="1670493293480" duration="765000" />
+      <workItem from="1670570550822" duration="142000" />
+      <workItem from="1670577785931" duration="2078000" />
     </task>
     <servers />
   </component>
@@ -118,6 +114,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MyTool_$main.coverage" NAME="main Coverage Results" MODIFIED="1670493738818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
+    <SUITE FILE_PATH="coverage/MyTool_$main.coverage" NAME="main Coverage Results" MODIFIED="1670579123119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
   </component>
 </project>
