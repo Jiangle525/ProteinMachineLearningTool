@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4935d8b-0721-4cf8-a48b-259b199db439" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/data/test.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/test.fasta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/data/test_neg.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/test_neg.fasta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/data/test_pos.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/test_pos.fasta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/data/train.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/train.fasta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/data/train_neg.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/train_neg.fasta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/data/train_pos.fasta" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/data/train_pos.fasta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" afterDir="false" />
-    </list>
+    <list default="true" id="f4935d8b-0721-4cf8-a48b-259b199db439" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +97,7 @@
       <updated>1670493291134</updated>
       <workItem from="1670493293480" duration="765000" />
       <workItem from="1670570550822" duration="142000" />
-      <workItem from="1670577785931" duration="2078000" />
+      <workItem from="1670577785931" duration="2167000" />
     </task>
     <servers />
   </component>
