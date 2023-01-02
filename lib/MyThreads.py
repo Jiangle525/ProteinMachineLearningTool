@@ -2,6 +2,7 @@ import os
 import pickle
 import random
 
+import pandas
 import pandas as pd
 from PyQt5.QtCore import QThread
 from sklearn.manifold import TSNE
@@ -307,6 +308,28 @@ class Thread_Save_Model(QThread):
             pickle.dump(shareInfo.menuModel.trainedModel, f)
         my_emit(signal.progressBar, 100)
         my_emit(signal.lineEdit_System_Tips, 'Model file has saved!')
+
+
+class Thread_Save_All_Metrics(QThread):
+    def __init__(self, directoryName):
+        super(Thread_Save_All_Metrics, self).__init__()
+        self.directoryName = directoryName
+
+    def run(self):
+        my_emit(signal.lineEdit_System_Tips, 'Saving metrics.')
+
+        my_emit(signal.progressBar, 0)
+        shareInfo.menuModel.canvasROC.figure.savefig(self.directoryName+'/ROC.png',dpi = 300)
+        shareInfo.menuModel.canvasConfusionMatrix.figure.savefig(self.directoryName+'/Confusion Matrix.png',dpi = 300)
+
+        dfClassificationReport = pandas.DataFrame(shareInfo.menuModel.classificationReport, index=['Negitive', 'Positive'])
+        dfClassificationReport.loc['Average'] = dfClassificationReport.apply(lambda x: x.mean())
+        dfClassificationReport = dfClassificationReport.applymap(lambda x: '{:.2f}%'.format(x * 100))
+        dfClassificationReport.to_csv(self.directoryName+'/Classification Report.csv')
+
+        my_emit(signal.progressBar, 100)
+        my_emit(signal.lineEdit_System_Tips, 'Metrics has saved!')
+
 
 
 class Thread_Start_Prediction(QThread):

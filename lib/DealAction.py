@@ -585,7 +585,16 @@ class DealAction:
         self.thread_Save_Model.start()
 
     def action_Save_All_Metrics(self):
-        self.ui_Main.textBrowser_Message.setText('action_Save_All_Metrics')
+        # if not self.CheckExistence(shareInfo.menuModel.canvasROC, 'Metrics isn\'t exist!'):
+        #     return
+        my_emit(signal.lineEdit_System_Tips, 'Selecting metrics save file.')
+        directoryName = QFileDialog().getExistingDirectory(self.ui_Main, 'Save metrics', './')
+
+        if not directoryName:
+            my_emit(signal.lineEdit_System_Tips, 'No save path selected!')
+            return
+        self.thread_Save_All_Metrics = Thread_Save_All_Metrics(directoryName)
+        self.thread_Save_All_Metrics.start()
 
     def action_Save_Classification_Report(self):
         self.ui_Main.textBrowser_Message.setText('action_Save_Classification_Report')
@@ -722,6 +731,7 @@ class DealAction:
                 tableItem = MyQTableWidgetItem('{:.2f}%'.format(sum(value) / 2 * 100))
                 tableItem.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
                 self.ui_Main.tableWidget_Classification_Report.setItem(2, col, tableItem)
+
 
     # Message Display
     def set_textBrowser_Message(self, text):

@@ -53,6 +53,7 @@ def k_fold_cross_validation(base_model, X, y, k=10):
     best_model = None
     i = 1
     kf = KFold(n_splits=k, shuffle=False)  # 初始化KFold
+    my_emit(signal.progressBar, 0)
     for train_index, test_index in kf.split(X):
         my_emit(signal.lineEdit_System_Tips, '{} fold is training...'.format(i))
         model = copy.deepcopy(base_model)
@@ -60,6 +61,8 @@ def k_fold_cross_validation(base_model, X, y, k=10):
         x_test, y_test = X[test_index], y[test_index]
         model.fit(x_train, y_train)
         y_pred_prob = model.predict_proba(x_test)[:, 1]
+        y_pred = model.predict(x_test)
+        cm = confusion_matrix(y_test,y_pred)
         fpr, tpr, thresholds = roc_curve(y_test, y_pred_prob)
         if auc(fpr, tpr) > best_auc:
             best_auc = auc(fpr, tpr)
@@ -67,6 +70,7 @@ def k_fold_cross_validation(base_model, X, y, k=10):
         fprs.append(fpr)
         tprs.append(tpr)
         my_emit(signal.progressBar, 100 * i // k)
+        my_emit(signal.textBrowser_Message, str((cm[0][0]+cm[1][1])/(cm[0][0]+cm[0][1]+cm[1][0]+cm[1][1])))
         i += 1
     my_emit(signal.lineEdit_System_Tips, "{} fold training completed!".format(k))
     return best_model, fprs, tprs
