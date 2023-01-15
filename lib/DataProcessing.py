@@ -101,10 +101,11 @@ def StartTrain(trainFileData, testFileData, encodingName, encodingParams, modelN
     test_sequences, test_labels = GetSequencesLabels(testFileData)
 
     encodingFunc = globals()[encodingName]
+    my_emit(signal.progressBar, 0)
     my_emit(signal.lineEdit_System_Tips, 'Encoding train set...')
     X_train = encodingFunc(train_sequences, **encodingParams)
     y_train = np.array(train_labels)
-
+    my_emit(signal.progressBar, 0)
     my_emit(signal.lineEdit_System_Tips, 'Encoding test set...')
     X_test = encodingFunc(test_sequences, **encodingParams)
     y_test = np.array(test_labels)

@@ -2,6 +2,7 @@ import math
 from collections import Counter
 import numpy as np
 from gensim.models.word2vec import Word2Vec
+from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from lib.MySignal import *
 
 
@@ -242,20 +243,21 @@ def TPC(sequences):
     return np.array(encodings)
 
 
-def Word2Vector(sequences, k_mer=3, vector_size=50):
+def WordCut(seqs, k=1):
     # 分词，分为[['C', 'C', 'C', 'U'],[U', 'G', 'U'],['G', 'C', 'C', 'U', 'U', 'C']]
-    def WordCut(seqs, k=1):
-        res = []
-        maxLength = 0
-        for seq in seqs:
-            cutSequence = []
-            for i in range(len(seq) - k + 1):
-                cutSequence.append(seq[i:i + k])
-            res.append(cutSequence)
-            if len(seq) > maxLength:
-                maxLength = len(seq)
-        return res, maxLength
+    res = []
+    maxLength = 0
+    for seq in seqs:
+        cutSequence = []
+        for i in range(len(seq) - k + 1):
+            cutSequence.append(seq[i:i + k])
+        res.append(cutSequence)
+        if len(seq) > maxLength:
+            maxLength = len(seq)
+    return res, maxLength
 
+
+def Word2Vector(sequences, k_mer=3, vector_size=50):
     cutSequences, sequenceMaxLength = WordCut(sequences, k_mer)
     model = Word2Vec(cutSequences, vector_size=vector_size, window=3, min_count=0)
     model.init_sims(replace=True)
@@ -274,3 +276,25 @@ def Word2Vector(sequences, k_mer=3, vector_size=50):
             my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
     encodings = np.array(encodingsVec, dtype=np.float32)
     return encodings.reshape(len(encodings), -1)
+
+
+def Doc2Vector(sequences, k_mer=3, vector_size=50, min_count=1, epochs=30):
+    cutSequences, sequenceMaxLength = WordCut(sequences, k_mer)
+    def MyTaggedDocument(list_of_list_of_words):
+        for i, list_of_words in enumerate(list_of_list_of_words):
+            yield TaggedDocument(list_of_words, [i])
+    dataForTraining = list(MyTaggedDocument(cutSequences))
+    model = Doc2Vec(vector_size=vector_size, min_count=min_count, epochs=epochs)
+    model.build_vocab(dataForTraining)
+    model.train(dataForTraining, total_examples=model.corpus_count, epochs=model.epochs)
+
+    encodingsVec = []
+    sequencesLength = len(sequences)
+    one_percent = max(1, sequencesLength // 100)
+    progressIndex = 0
+    for cutSentence in cutSequences:
+        encodingsVec.append(model.infer_vector(cutSentence))
+        progressIndex += 1
+        if progressIndex % one_percent == 0 or progressIndex == sequencesLength:
+            my_emit(signal.progressBar, 100 * progressIndex / sequencesLength)
+    return np.array(encodingsVec, dtype=np.float32)

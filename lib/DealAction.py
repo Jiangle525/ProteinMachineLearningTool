@@ -94,11 +94,27 @@ def SelectFeature(comboBox, formLayout):
         spinBoxKmer.setMaximum(500)
         spinBoxKmer.setMinimum(1)
         formLayout.addRow('k_mer:', spinBoxKmer)
-
         spinBoxVectorSize = QSpinBox()
         spinBoxVectorSize.setMaximum(500)
         spinBoxVectorSize.setMinimum(5)
         formLayout.addRow('vector_size:', spinBoxVectorSize)
+    if currentItemText == 'Doc2Vector':
+        spinBoxKmer = QSpinBox()
+        spinBoxKmer.setMaximum(500)
+        spinBoxKmer.setMinimum(1)
+        formLayout.addRow('k_mer:', spinBoxKmer)
+        spinBoxVectorSize = QSpinBox()
+        spinBoxVectorSize.setMaximum(500)
+        spinBoxVectorSize.setMinimum(5)
+        formLayout.addRow('vector_size:', spinBoxVectorSize)
+        spinBoxMinCount = QSpinBox()
+        spinBoxMinCount.setMaximum(500)
+        spinBoxMinCount.setMinimum(1)
+        formLayout.addRow('min_count:', spinBoxMinCount)
+        spinBoxEpochs = QSpinBox()
+        spinBoxEpochs.setMaximum(500)
+        spinBoxEpochs.setMinimum(10)
+        formLayout.addRow('epochs:', spinBoxEpochs)
 
 
 def SelectModel(comboBox, formLayout):

@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4935d8b-0721-4cf8-a48b-259b199db439" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/MyTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/MyTool.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/111.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/DataPreparation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/111/Classification Report.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/111/Confusion Matrix.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/111/ROC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/background.qrc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/lib/DataProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/DataProcessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/DealAction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/lib/MyThreads.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/MyThreads.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/lib/aa_my_thread.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/合并文件并打乱顺序.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyTool/股票预测工具.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/lib/FeatureExtraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/lib/FeatureExtraction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/result/5-50.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/result/feature.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/result/result.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/ui/EncodingMethod.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/ui/EncodingMethod.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyTool/ui/FeatureExtraction.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../MyTool/ui/FeatureExtraction.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -39,6 +42,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../MyTool" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="2Icue5GnyjmVp7aekKqstQ4Wu9I" />
   <component name="ProjectViewState">
@@ -143,6 +154,8 @@
       <workItem from="1670577785931" duration="2167000" />
       <workItem from="1670756735224" duration="533000" />
       <workItem from="1672619418366" duration="5064000" />
+      <workItem from="1673751442031" duration="1326000" />
+      <workItem from="1673770011408" duration="2849000" />
     </task>
     <servers />
   </component>
@@ -159,9 +172,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MyTool_$main.coverage" NAME="main Coverage Results" MODIFIED="1672624589887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
+    <SUITE FILE_PATH="coverage/MyTool_$main.coverage" NAME="main Coverage Results" MODIFIED="1673773733352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
     <SUITE FILE_PATH="coverage/MyTool_$1.coverage" NAME="1 Coverage Results" MODIFIED="1672624511207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../MyTool" />
   </component>
 </project>

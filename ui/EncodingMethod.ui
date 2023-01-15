@@ -118,6 +118,11 @@
                 <string>Word2Vector</string>
                </property>
               </item>
+              <item>
+               <property name="text">
+                <string>Doc2Vector</string>
+               </property>
+              </item>
              </widget>
             </item>
             <item row="0" column="0">
@@ -153,8 +158,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>224</width>
-              <height>156</height>
+              <width>204</width>
+              <height>108</height>
              </rect>
             </property>
             <layout class="QFormLayout" name="formLayout_5">
